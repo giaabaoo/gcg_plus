@@ -1,0 +1,13 @@
+dataset:
+  name: strongreject_313
+  dataset_class: harmful_prompts
+  data_path: ./data/strongreject_313.json
+  num_samples: 0
+  # 20 prompts: original 10 smoke + 10 new across all categories
+  # Original 10: 21,16,124,193,171,86,128,61,25,205
+  # New 10: 0,1 (disinfo), 50,51 (hate), 100,101 (illegal), 150,151 (NV crimes), 209,210 (sexual)
+  prompt_ids: [21, 16, 124, 193, 171, 86, 128, 61, 25, 205, 0, 1, 50, 51, 100, 101, 150, 151, 209, 210]
+  num_shards: 1
+  shard_idx: 0
+
+output_dir: ./results/full_20

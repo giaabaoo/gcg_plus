@@ -1,0 +1,10 @@
+dataset:
+  name: advbench_50_missing
+  dataset_class: harmful_prompts
+  data_path: ./data/advbench_50.json
+  num_samples: 0
+  prompt_ids: [3, 13, 34, 51, 90, 112, 132, 167, 244, 274, 297, 349, 388, 389, 410, 443, 444, 505, 9999]
+  num_shards: 1
+  shard_idx: 0
+
+output_dir: ./results/advbench_50

@@ -1,0 +1,10 @@
+dataset:
+  name: advbench_50
+  dataset_class: harmful_prompts
+  data_path: ./data/advbench_50.json
+  num_samples: 0
+  prompt_ids: []
+  num_shards: 2
+  shard_idx: 0  # overridden per job
+
+output_dir: ./results/advbench_50

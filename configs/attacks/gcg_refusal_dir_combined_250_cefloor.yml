@@ -1,0 +1,14 @@
+attack:
+  attack_class:   gcg_refusal_dir
+  num_steps:      250
+  search_width:   256
+  suffix_len:     20
+  direction_path: "checkpoints/direction.pt"
+  hook_layer:     16
+  rphi_ckpt:      "checkpoints/rphi_v2/best.pt"
+  rphi_every_k:   5
+  ce_lambda:      1.0
+  ce_floor:       0.1
+  seed:           42
+
+exp_name: exp15_cefloor_250steps

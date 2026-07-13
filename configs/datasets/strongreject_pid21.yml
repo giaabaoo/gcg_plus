@@ -1,0 +1,10 @@
+dataset:
+  name: strongreject_313
+  dataset_class: harmful_prompts
+  data_path: ./data/strongreject_313.json
+  num_samples: 0
+  prompt_ids: [21]
+  num_shards: 1
+  shard_idx: 0
+
+output_dir: ./results/variance_pid21

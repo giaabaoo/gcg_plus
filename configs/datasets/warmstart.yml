@@ -1,0 +1,7 @@
+dataset:
+  name: warmstart_10
+  dataset_class: warmstart
+  data_path: ./data/warmstart_init.json
+  prompt_ids: []
+
+output_dir: ./results/smoke_rphi_v2

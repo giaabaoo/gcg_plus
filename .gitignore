@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+checkpoints/rphi/
+checkpoints/rphi_v2/
+logs/
+_trash/
+.claude/

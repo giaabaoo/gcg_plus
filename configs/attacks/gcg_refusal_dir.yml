@@ -1,0 +1,11 @@
+attack:
+  attack_class:    gcg_refusal_dir
+  num_steps:       250
+  search_width:    512
+  suffix_len:      20
+  direction_path:  "checkpoints/direction.pt"
+  hook_layer:      16
+  rphi_ckpt:       "checkpoints/rphi_v2/best.pt"
+  rphi_every_k:    5
+
+exp_name: exp7_refusal_dir

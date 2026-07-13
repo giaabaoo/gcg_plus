@@ -1,0 +1,10 @@
+dataset:
+  name: strongreject_313
+  dataset_class: harmful_prompts
+  data_path: ./data/strongreject_313.json
+  num_samples: 0    # 0 = all 313
+  prompt_ids: []    # [] = all
+  num_shards: 1     # override via CLI for parallel runs
+  shard_idx: 0
+
+output_dir: ./results/strongreject

@@ -1,0 +1,10 @@
+dataset:
+  name: smoke10
+  dataset_class: harmful_prompts
+  data_path: ./data/smoke10_advprefix_targets.json
+  num_samples: 0
+  prompt_ids: []
+  num_shards: 1
+  shard_idx: 0
+
+output_dir: ./results/smoke10_exp15

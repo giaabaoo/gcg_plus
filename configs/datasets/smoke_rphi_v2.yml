@@ -1,0 +1,14 @@
+dataset:
+  name: strongreject_313
+  dataset_class: harmful_prompts
+  data_path: ./data/strongreject_313.json
+  num_samples: 0
+  # 10 prompts across three regimes:
+  #   Gemma AASR=1 (baseline):          21, 16, 124, 193
+  #   Gemma AASR=0 but best_loss<=1.0:  171, 86, 128
+  #   best_loss>2.0:                     61, 25, 205
+  prompt_ids: [21, 16, 124, 193, 171, 86, 128, 61, 25, 205]
+  num_shards: 1
+  shard_idx: 0
+
+output_dir: ./results/smoke_rphi_v2

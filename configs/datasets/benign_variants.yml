@@ -1,0 +1,7 @@
+dataset:
+  name: benign_variants_10
+  dataset_class: benign_variants
+  data_path: ./data/benign_variants.json
+  prompt_ids: []
+
+output_dir: ./results/smoke_rphi_v2
