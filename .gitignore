@@ -20,3 +20,12 @@ checkpoints/rphi_v2/
 # --- results ---
 # curated headline dirs are force-added in the initial commit.
 # add fresh scratch run dirs here as needed.
+
+# --- vendored tools: keep source, drop nested git + unused model runs ---
+tools/*/.git/
+tools/**/.git/
+# only meta-llama-3-8b-instruct run is used; drop the other 4 models
+tools/refusal_direction/pipeline/runs/gemma-2b-it/
+tools/refusal_direction/pipeline/runs/llama-2-7b-chat-hf/
+tools/refusal_direction/pipeline/runs/qwen-1_8b-chat/
+tools/refusal_direction/pipeline/runs/yi-6b-chat/
