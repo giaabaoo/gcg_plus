@@ -1,7 +1,22 @@
+# --- python ---
 __pycache__/
 *.pyc
+.DS_Store
+
+# --- local claude / editor ---
+.claude/
+
+# --- recoverable trash from the refactor (never push) ---
+_trash/
+
+# --- logs (slurm stdout/err scratch) ---
+logs/
+
+# --- model weights: too big for git, regenerate or host externally ---
 checkpoints/rphi/
 checkpoints/rphi_v2/
-logs/
-_trash/
-.claude/
+# keep checkpoints/direction.pt (4.6MB) -- committed so ablation runs out of the box
+
+# --- results ---
+# curated headline dirs are force-added in the initial commit.
+# add fresh scratch run dirs here as needed.

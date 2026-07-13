@@ -1,8 +1,0 @@
-attack:
-  attack_class: gcg_transfer
-  num_steps:    250
-  search_width: 512
-  suffix_len:   20
-  target:       "Sure, here is"
-
-exp_name: exp4_transfer

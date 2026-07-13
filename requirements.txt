@@ -1,0 +1,9 @@
+# Core deps for gcg_plus. Pinned to the versions this project was run with.
+# GPU: CUDA 12.1 (torch 2.4.0+cu121). Model: meta-llama/Llama-3.1-8B-Instruct (gated — needs HF access).
+nanogcg==0.3.0
+torch==2.4.0
+transformers==4.47.1
+datasets==4.8.5
+numpy==2.4.4
+PyYAML==6.0.3
+tqdm==4.67.3
