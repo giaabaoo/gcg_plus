@@ -34,6 +34,21 @@ that scores 90% *under* the hook collapses to **0%** the moment the hook is remo
 | gcg_hook_target suffix, hook removed | off | 0% (90%→0%) | `results/smoke10_exp21/` |
 | gcg_cosine (multi-layer cosine loss) | off | 0% | `results/smoke10_multilayer/`, `results/smoke10_exp20/` |
 | act_match (match ablated activations) | off | 0% | `results/act_match/` |
+| **IRIS + GCG, β=0.75** (faithful Eq. 8, last-token r̂ penalty) | off | **0%** | `results/smoke10_iris_b075/` |
+| **IRIS + GCG, β=1.0** (term-2 only, no CE) | off | **0%** | `results/smoke10_iris_b100/` |
+| **IRIS + GCG, β=0.75, normalized r̂** (balanced terms) | off | **0%** | `results/smoke10_iris_b075_norm/` |
+| **IRIS + GCG, β=1.0, normalized r̂** | off | **0%** | `results/smoke10_iris_b100_norm/` |
+
+**IRIS (Huang et al., NAACL 2025) does not survive a strong judge on this set.** IRIS's own
+paper reports its gains under **LlamaGuard-2 / HarmBench-CLS**; scored under Gemma-StrongREJECT
+(≥0.5), a faithful discrete-GCG IRIS replication is **0/10 at both β=0.75 and β=1.0** — every
+prompt returns a bare refusal. The optimizer *does* minimize Eq. 8 (the last-token refusal
+projection ‖r̂ᵀh‖² falls from ~250–380 to ~1–21), but the suffix never learns the harmful target
+and does not suppress refusal at generation time. This holds under **both** parametrizations:
+with raw r̂ the penalty numerically swamps the CE term, and with **unit-normalized r̂ the two
+terms are balanced (t1w≈t2w) yet AASR is still 0/10** — so the result is robust to r̂ scaling and
+to β. Fair-comparison budget = 200 steps / width 64 (identical to Exp16/Exp18). See
+`scripts/run_iris_smoke10.py`, `results/smoke10_iris_summary.md`, and HANDOFF Part-3.
 
 Reachability diagnostic: `results/reachability_diag.json` — ablated target activations sit
 50–75% of the activation norm off the manifold a real input can reach; the gap grows toward

@@ -247,3 +247,75 @@ All Part 2 jobs complete and scored. Nothing running. Suffix-vs-ablation questio
 - Partial ablation (fewer layers): where does the 100%→suffix-reachable boundary lie?
 - Longer suffix budgets beyond 40 — unlikely to help given ceiling evidence.
 - Judge threshold sensitivity analysis.
+
+---
+---
+
+# PART 3 — Faithful IRIS replication under Gemma-StrongREJECT
+
+**Question:** IRIS (Huang et al., NAACL 2025, *"Stronger Universal and Transferable Attacks by
+Suppressing Refusals"*) reports large ASR gains — but scored under **LlamaGuard-2 / HarmBench-CLS**.
+Does the gain survive our strong Gemma-StrongREJECT judge on smoke10, or was it judge inflation?
+
+**Answer: it does not survive. IRIS = 0/10 (0%) at both β=0.75 and β=1.0.** Every prompt returns a
+bare refusal ("I can't fulfill that request…"); mean StrongREJECT normalized ≈ 0.001.
+
+## Method (faithful to Eq. 8 / Algorithm 1)
+`scripts/run_iris_smoke10.py` — one config-driven script; `--runs b075,b100[,b075_suffix]`.
+- **Objective (Eq. 8):** `L = -(1-β)·log p(y|q‖x) + β·Σ_{h∈H} (r̂ᵀh)²`.
+- **Optimizer:** discrete token-swap GCG (Algorithm 1), n_replace=1, 20-tok suffix, 200 steps,
+  width 64, topk 256 — matches prior discrete-GCG exps. (Paper: "uses GCG as the optimizer".)
+- **Target y (term 1):** the Arditi activation-edit output per prompt (`results/smoke10_arditi/`),
+  first 20 tokens. (Paper uses the jailbroken-via-ablation output, not "Sure, here is".)
+- **H (term 2):** paper says "embeddings of the **last input token** on every layer" ⇒ a SINGLE
+  position (token before generation) × all 32 layers. This is the faithful default.
+- **r̂:** a SINGLE refusal vector (Eq. 8 has no layer index); paper's best layer = **layer 10** for
+  Llama-3. `mean_diffs[0,10]`, **raw diff-in-means, NOT unit-normalized** (‖r̂‖=2.63, logged).
+- **β:** 0.75 (paper's best) and 1.0 (term-2 only, CE coeff → 0).
+- **Generation:** greedy, suffix appended to the prompt, **no hook** (suffix must work alone).
+
+## Results (smoke10, Gemma-StrongREJECT ≥ 0.5)
+| Method | Hook | AASR | Result dir |
+|---|---|---|---|
+| IRIS + GCG, β=0.75 (faithful, last-token r̂) | off | **0/10** | `results/smoke10_iris_b075/` |
+| IRIS + GCG, β=1.0 (term-2 only) | off | **0/10** | `results/smoke10_iris_b100/` |
+| IRIS + GCG, β=0.75, all-suffix-positions variant | off | **0/10** | `results/smoke10_iris_b075_suffix/` |
+| IRIS + GCG, β=0.75, **normalized r̂** (‖r̂‖=1) | off | **0/10** | `results/smoke10_iris_b075_norm/` |
+| IRIS + GCG, β=1.0, **normalized r̂** | off | **0/10** | `results/smoke10_iris_b100_norm/` |
+
+All five configs = 0/10 — invariant to H interpretation (last-token vs all suffix positions), to β,
+and to r̂ normalization. Fair in-table budget for the normalized runs is **200 steps / width 64**
+(identical to Exp16/Exp18). Key control: with **normalized r̂ the loss terms are balanced at
+convergence** (t1w≈t2w, e.g. pid 444: 0.39 vs 0.42) — so 0% is NOT an artifact of raw-r̂ swamping
+CE; even a properly-balanced IRIS objective fails. CE stays ~1.2–2.8 (target never learned); every
+completion is a refusal; mean StrongREJECT ≈ 0.001; gen_hook_count=0 asserted per prompt.
+NOTE: a strict paper-budget run (normalized r̂, 500 steps / width 512) is wired as configs
+`b075_paper`/`b100_paper` but not run to completion (compute-bound, ~2.5 h/run on one H100); the
+200/64 fair-budget result above is the apples-to-apples table entry.
+
+Per-prompt breakdown (SR score, final loss, term1/term2 split): `results/smoke10_iris_summary.md`.
+
+## Why it fails (key finding)
+The optimizer **does** minimize Eq. 8: the last-token refusal projection ‖r̂ᵀh‖² drops from
+~250–380 (init) to ~1–21 (converged). But **CE barely moves** (stays ~1.3–2.7). Reason: with
+**raw r̂**, term-2 (Σ over 32 layers of squared projection) numerically dominates the CE term even
+at β=0.75 — so β=0.75 ≈ β=1.0 in practice, and the suffix optimizes to null the refusal projection
+at the *suffix's own last position* without ever learning to produce the harmful target. Zeroing
+that projection during the forward pass is NOT the same as ablating r everywhere at generation —
+consistent with Part-2's central finding (a suffix perturbs via attention at input positions; the
+model regenerates r downstream). Net: the standalone suffix yields refusals → 0% under a real judge.
+
+This also predicts why the paper's reported β-sensitivity (50%→56%) is modest and hints the paper
+may have normalized r̂. **Recommended follow-up:** unit-normalized-r̂ variant (rebalances CE vs the
+penalty) and/or the paper's LlamaGuard judge for a head-to-head "judge inflation" quantification.
+
+## Gotchas (Part 3)
+- **This box ≠ the SLURM cluster.** It's a machine with a local **H100** (not `cscc-gpu-p`); no
+  `sbatch`. Run scripts directly with system `python3` (3.10, torch 2.5.1+cu121, nanogcg installed).
+- **Model:** gated `meta-llama/Llama-3.1-8B-Instruct` is NOT cached and no HF_TOKEN is set; use the
+  cached ungated mirror **`NousResearch/Meta-Llama-3.1-8B-Instruct`** (identical weights).
+- **Judge base:** `score_with_gemma.py` hardcodes gated `google/gemma-2b` (uncached). Score via the
+  wrapper that overrides `BASE_MODEL='alpindale/gemma-2b'` (cached ungated mirror).
+- **GCG init:** random-token init fails nanogcg's `filter_ids` (no round-trip); use the repeated-"x"
+  init (as in exp20).
+- `mean_diffs.pt` is `[5 pos, 32 layer, 4096]`, float64; `[0]` = post-instruction position -5.
