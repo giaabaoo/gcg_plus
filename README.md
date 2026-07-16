@@ -16,10 +16,13 @@ Two questions, two "parts":
   the hook? We push GCG to a full budget aimed at the exact text ablation produces, and
   diagnose why it can't.
 
-**Headline finding:** No. Ablation hits 100% AASR; the best no-hook suffix attack (DTA)
-reaches 50%; direct GCG caps at **20% even with a full budget aimed at a known-reachable
-target**. The ceiling is a property of the attack surface, not the compute budget — a suffix
-that scores 90% *under* the hook collapses to **0%** the moment the hook is removed.
+**Headline finding:** No — *for suffixes.* Ablation hits 100% AASR; the best no-hook **suffix**
+attack (DTA) reaches 50%; direct GCG caps at **20% even with a full budget aimed at a
+known-reachable target**. The ceiling is a property of the *suffix* attack surface, not the
+compute budget — a suffix that scores 90% *under* the hook collapses to **0%** the moment the
+hook is removed. But the ceiling is specific to token-suffix optimization: a black-box
+**persuasion** attack (PAP, no suffix/gradient/hook) reaches **90% best-of-5** on the same set
+and judge — see the PAP rows below.
 
 ## Results (10-prompt smoke set, Gemma StrongREJECT judge)
 
@@ -38,6 +41,20 @@ that scores 90% *under* the hook collapses to **0%** the moment the hook is remo
 | **IRIS + GCG, β=1.0** (term-2 only, no CE) | off | **0%** | `results/smoke10_iris_b100/` |
 | **IRIS + GCG, β=0.75, normalized r̂** (balanced terms) | off | **0%** | `results/smoke10_iris_b075_norm/` |
 | **IRIS + GCG, β=1.0, normalized r̂** | off | **0%** | `results/smoke10_iris_b100_norm/` |
+| **PAP (persuasion, best-of-5 techniques)** | off | **90%** | `results/smoke10_pap/` |
+| **PAP (persuasion, per-attempt avg over 50)** | off | **24%** | `results/smoke10_pap/` |
+
+**PAP (Zeng et al., 2024) *does* survive the strong judge — the one no-hook attack that does.**
+A faithful, on-box **persuasion** attack (rewrite each request with the paper's top-5 techniques,
+no suffix, no gradients, no activation hook) reaches **9/10 best-of-5** and **24% per-attempt**
+under Gemma-StrongREJECT — matching Arditi ablation (100%) far more closely than any suffix or
+IRIS variant, all of which cap at 0–50%. **Misrepresentation** ("I'm a researcher/creator
+illustrating the harm") is the strongest single technique (6/10); **Expert Endorsement is dead**
+(0/10). The persuader here is the *local, aligned* Llama-3.1-8B itself (paper uses GPT-4), with a
+format-prefill to stop it self-refusing — a **weaker** persuader, so 90% is a lower bound. This
+inverts the suffix-attack story: the harmful-content ceiling that gradient attacks can't breach
+without the hook falls easily to natural-language persuasion. See `scripts/run_pap_smoke10.py`,
+`results/smoke10_pap_summary.md`, and HANDOFF Part-4.
 
 **IRIS (Huang et al., NAACL 2025) does not survive a strong judge on this set.** IRIS's own
 paper reports its gains under **LlamaGuard-2 / HarmBench-CLS**; scored under Gemma-StrongREJECT
@@ -139,7 +156,7 @@ configs/             # base / models / datasets / attacks YAMLs
 data/                # advbench_50, smoke10_advprefix_targets, strongreject_313
 checkpoints/         # direction.pt committed; r_phi weights gitignored (see README there)
 results/             # curated headline result dirs (committed)
-tools/               # vendored: refusal_direction, dynamic-jailbreak (DTA), jailbreak-objectives
+tools/               # vendored: refusal_direction, persuasive_jailbreaker (PAP), johnny_persuade_paper.pdf
 HANDOFF.md           # full research log
 ```
 
