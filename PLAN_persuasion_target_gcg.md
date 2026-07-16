@@ -1,8 +1,10 @@
 # Plan — Persuasion-target GCG ("AdvPrefix, but persuasion-shaped targets")
 
-**Status:** ✅ EXECUTED (Arm A + naive + neutral controls, k=1, 200/64). Result: **0/10 all arms**
-— persuasion target gives no lift, reachability trap holds (prefix_induced 0/10). See
-`results/smoke10_pgcg_summary.md` and HANDOFF Part 5. Deferred: best-of-k, larger budget, Arm B.
+**Status:** ✅ EXECUTED + CORRECTED (a generation-context bug had falsely zeroed all arms; fixed).
+Corrected result: **naive 5/10, persuasion_short 2/10, persuasion 0/10, neutral 0/10**. Plain GCG
+works; the persuasion-*target* idea is refuted on target *shape* (scaffold vs hedged), not
+semantics. See `results/smoke10_pgcg_summary.md` + HANDOFF Part 5 correction. Deferred: best-of-k,
+Arm B, and re-running IRIS/other GCG rows that share the same bug.
 
 ## Hypothesis
 Suffix-GCG on Llama-3.1-8B caps at 0–20% StrongREJECT-valid ASR without the hook

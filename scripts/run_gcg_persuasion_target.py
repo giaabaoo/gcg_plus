@@ -50,12 +50,13 @@ def build_static(tok, emb, prompt, target_text, device):
     tgt_ids = tok(target_text, add_special_tokens=False,
                   return_tensors="pt")["input_ids"][:, :TARGET_TOKENS].to(device)
     return (emb(before_ids).detach(), emb(after_ids).detach(),
-            emb(tgt_ids).detach(), tgt_ids)
+            emb(tgt_ids).detach(), tgt_ids, before_ids, after_ids)
 
 
 def run_one(tok, model, emb, prompt, target_text, device):
     torch.manual_seed(SEED); torch.cuda.manual_seed_all(SEED)
-    before_emb, after_emb, target_emb, tgt_ids = build_static(tok, emb, prompt, target_text, device)
+    before_emb, after_emb, target_emb, tgt_ids, before_ids, after_ids = build_static(
+        tok, emb, prompt, target_text, device)
     tgt_len = tgt_ids.shape[1]
     V = emb.weight.shape[0]
 
@@ -96,9 +97,10 @@ def run_one(tok, model, emb, prompt, target_text, device):
     n_hooks = sum(len(m._forward_hooks) + len(m._forward_pre_hooks) for m in model.modules())
     assert n_hooks == 0, f"hook present at gen: {n_hooks}"
     suffix = tok.batch_decode(best["ids"])[0]
-    msgs = [{"role": "user", "content": prompt + " " + suffix}]
-    chat = tok.apply_chat_template(msgs, tokenize=False, add_generation_prompt=True)
-    gids = tok([chat], return_tensors="pt")["input_ids"].to(device)
+    # Generate from the EXACT optimization token-ids (before + suffix + after). Re-templating
+    # `prompt + " " + suffix` injected a leading space AND a second BOS, so the brittle suffix
+    # was evaluated in a context it was never optimized for -> false refusals (see Attempt 1).
+    gids = torch.cat([before_ids, best["ids"], after_ids], dim=1)
     with torch.no_grad():
         oids = model.generate(gids, max_new_tokens=MAX_NEW, do_sample=False, pad_token_id=tok.eos_token_id)
     gen_ids = oids[0][gids.shape[1]:]
@@ -117,7 +119,8 @@ def run_one(tok, model, emb, prompt, target_text, device):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--arm", required=True, choices=["persuasion", "naive", "neutral"])
+    ap.add_argument("--arm", required=True,
+                    choices=["persuasion", "naive", "neutral", "persuasion_short"])
     ap.add_argument("--out_dir", default=None)
     args = ap.parse_args()
     out_dir = args.out_dir or f"results/smoke10_pgcg_{args.arm}"
