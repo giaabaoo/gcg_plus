@@ -43,6 +43,9 @@ and judge — see the PAP rows below.
 | **IRIS + GCG, β=1.0, normalized r̂** | off | **0%** | `results/smoke10_iris_b100_norm/` |
 | **PAP (persuasion, best-of-5 techniques)** | off | **90%** | `results/smoke10_pap/` |
 | **PAP (persuasion, per-attempt avg over 50)** | off | **24%** | `results/smoke10_pap/` |
+| **Persuasion-target GCG** (suffix → PAP-mined target) | off | **0%** | `results/smoke10_pgcg_persuasion/` |
+| Persuasion-target GCG — naive-target control | off | **0%** | `results/smoke10_pgcg_naive/` |
+| Persuasion-target GCG — neutral-prefix control | off | **0%** | `results/smoke10_pgcg_neutral/` |
 
 **PAP (Zeng et al., 2024) *does* survive the strong judge — the one no-hook attack that does.**
 A faithful, on-box **persuasion** attack (rewrite each request with the paper's top-5 techniques,
@@ -55,6 +58,19 @@ format-prefill to stop it self-refusing — a **weaker** persuader, so 90% is a 
 inverts the suffix-attack story: the harmful-content ceiling that gradient attacks can't breach
 without the hook falls easily to natural-language persuasion. See `scripts/run_pap_smoke10.py`,
 `results/smoke10_pap_summary.md`, and HANDOFF Part-4.
+
+**Can you launder PAP into a suffix? No.** Natural question: PAP works (90%) and its winning
+completions are *provably model-emitted* text — so seed GCG with those openers as CE-targets
+(AdvPrefix-style) and get a universal suffix for free? At the fair budget (200 steps / width 64,
+one run/prompt), **persuasion-target GCG scores 0/10 — identical to a naive-affirmative target
+and a length/perplexity-matched neutral control.** Diagnostic: `prefix_induced = 0/10` for every
+arm — the suffix minimizes teacher-forced CE but greedy generation still refuses and almost never
+emits the target opener (mean prefix-match 0.01–0.03). The persuasion opener that scored 90% *as
+prompt context* yields 0% *as a suffix target on the plain request*. Persuasion's power is in the
+semantic context the model **reads**, not in a reachable output-prefix a suffix can install — the
+two attack surfaces are not interchangeable. This is the Part-2 reachability trap, now shown to
+hold even for on-manifold targets. See `scripts/{mine_pap_targets,run_gcg_persuasion_target}.py`
+and `results/smoke10_pgcg_summary.md`.
 
 **IRIS (Huang et al., NAACL 2025) does not survive a strong judge on this set.** IRIS's own
 paper reports its gains under **LlamaGuard-2 / HarmBench-CLS**; scored under Gemma-StrongREJECT

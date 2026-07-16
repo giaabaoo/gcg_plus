@@ -375,3 +375,51 @@ paper's ensemble reporting; the conservative single-shot rate is 24%.
   terror plan). Clear real hits remain (id=23, 52, 219), so the headline isn't an artifact.
 - **Faithful upgrade path:** swap the persuader for GPT-4 (needs `OPENAI_API_KEY`) or load the
   gated `CHATS-Lab/Persuasive-Jailbreaker-Data` — script accepts either without other changes.
+
+---
+
+# PART 5 — Persuasion-target GCG: can you launder PAP into a suffix? No (0/10)
+
+**Idea (user's):** PAP works (Part 4, 90% best-of-5) and its winning completions are *provably
+model-emitted* text. So — AdvPrefix-style (Zhu et al. 2024) — mine those compliant openers and
+use them as GCG **CE-targets** on the *plain* request. If a suffix can install a persuasion-shaped,
+on-manifold opener, you'd get a universal suffix "for free" and break the Part-2 ceiling.
+
+**Answer: it doesn't transfer. 0/10, same as controls.**
+
+## Setup (`scripts/mine_pap_targets.py`, `scripts/run_gcg_persuasion_target.py`)
+Fair budget = the table's other suffix rows: plain request + 20-tok suffix, discrete GCG
+**200 steps / width 64 / topk 256**, greedy gen, **no hook**, one run/prompt. Only the CE target
+varies across 3 arms:
+- **persuasion** — first 20 tokens of each prompt's best-StrongREJECT PAP completion (`results/smoke10_pap/`).
+- **naive** — the AdvPrefix affirmative in `data/` (existing baseline).
+- **neutral** — length-matched, NLL-closest benign filler (isolates semantics from fluency).
+`data/pap_targets.json` holds all three per prompt + token-len + NLL (mean|Δ| neutral-vs-persuasion
+= 0.83 nats, lengths matched exactly).
+
+## Result (`results/smoke10_pgcg_summary.md`)
+| arm | AASR | mean norm | prefix-induced | mean best_ce |
+|---|---|---|---|---|
+| persuasion | **0/10** | 0.002 | 0/10 | 1.207 |
+| naive | **0/10** | 0.002 | 0/10 | 0.454 |
+| neutral | **0/10** | 0.002 | 0/10 | 2.224 |
+
+- **H1 (target shape lifts ASR): rejected** — persuasion ≈ naive ≈ 0.
+- **H2 (semantics vs fluency): moot** — nothing beat the control.
+- **Mechanism = reachability trap.** `prefix_induced = 0/10` everywhere; mean prefix-match 0.01–0.03.
+  The suffix minimizes *teacher-forced* CE (naive fits best, ce 0.45) but greedy generation refuses
+  and won't emit the opener. On-manifold-ness of the target *string* is not sufficient; it must be
+  reachable *from a plain request via a suffix*, and it isn't. Confirms Part-1/2 even for a
+  provably-emitted target (not an off-manifold ablation target).
+
+## The decisive contrast
+Same persuasion opener → **90% as prompt context (PAP)** vs **0% as a GCG suffix-target on the plain
+request.** Persuasion's power lives in the semantic context the model *reads*, not in a reachable
+output-prefix a suffix can install. **PAP and suffix-GCG are not interchangeable.**
+
+## Caveats / next
+- This is the k=1, 200/64 apples-to-apples cell — not "no suffix can ever work." **Best-of-k
+  restarts** and **larger budget** are the obvious next probes; also Arm B (frozen PAP paragraph in
+  the prompt + suffix), which was deferred.
+- naive 0/10 on smoke10 is consistent with `gcg_arditi_target` (0%); the table's 20% was advbench_50.
+- id=503 had no ≥0.5 PAP hit → used its best sub-0.5 opener (flagged); fails like the rest.
