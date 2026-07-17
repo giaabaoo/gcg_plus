@@ -24,7 +24,7 @@ from peft import PeftModel
 from transformers import AutoModelForCausalLM, AutoTokenizer
 
 
-BASE_MODEL    = 'google/gemma-2b'
+BASE_MODEL    = os.environ.get('STRONGREJECT_BASE_MODEL', 'google/gemma-2b')  # ungated mirror: alpindale/gemma-2b
 ADAPTER_MODEL = 'qylu4156/strongreject-15k-v1'
 
 # Canonical template from dsbowen/strong_reject judge_templates.json — must
