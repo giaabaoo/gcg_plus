@@ -448,3 +448,102 @@ and higher-CE, so they lose even length-matched (id=444 hit CE 0.41 yet refused)
 as **input context** (PAP 90%), not as an **output target**. (3) **The same generation bug is in
 `run_iris_smoke10.py:160` and sibling GCG scripts — the committed IRIS 0% and other 0% GCG rows
 need re-running before they can be trusted.** Full detail: `results/smoke10_pgcg_summary.md`.
+
+---
+---
+
+# PART 6 — Persuasion-derived "compliance direction": real, but dominated by −r
+
+**Idea (user's):** use PAP persuasion as a *data generator* for rare harmful-compliance
+activations, extract a behaviorally-defined per-technique "compliance direction"
+(Arditi-style diff-in-means), then **ADD** it to the residual stream to jailbreak *bare*
+harmful prompts. Model: Llama-3.1-8B-Instruct, judge: Gemma-StrongREJECT ≥ 0.5.
+
+**Answer: the effect is real and direction-specific — but it is not technique-specific,
+and it is strictly worse than simply adding the negated refusal direction (−r).**
+
+## Design (the parts that mattered)
+- **Within-technique matched contrast.** A_t = verified harmful-compliance PAPs,
+  B_t = refused PAPs, **same technique/wrapper** — so the diff isn't confounded by
+  "persuasive essay vs bare prompt" style. Deflections discarded from BOTH pools.
+- **3-way labeling** (compliance ≥0.5 / explicit refusal / deflection-discard). This
+  earned its keep: Threats produced **65% deflections**; a naive "low score = refusal"
+  rule would have made B_t ~93% contamination.
+- **Leakage control.** Base prompts split extract=187 / val=62 / test=64. Directions
+  built ONLY from extract; α selected on val; reported on disjoint test.
+- **Intervention** = harness's `get_activation_addition_input_pre_hook`, added at every
+  layer/position/generation step, coeff = α · mean per-layer activation norm.
+
+## Table 1 — compliance data (7885 PAPs, full strongreject_313 × 6 × k=5)
+| technique | A_t | B_t | deflection | compliance rate |
+|---|---|---|---|---|
+| Misrepresentation | 542 | 383 | 264 | 45.6% |
+| Logical appeal | 435 | 611 | 321 | 31.8% |
+| Authority endorsement | 301 | 593 | 343 | 24.3% |
+| Evidence-based | 293 | 686 | 340 | 22.2% |
+| Expert Endorsement | 177 | 925 | 128 | 14.4% |
+| Threats (control) | 62 | 479 | 1002 | 4.0% |
+Technique ordering reproduces Part 4 independently. Expert Endorsement's Part-4 "0/10"
+was small-sample; at 1230 attempts it is a real 14.4%.
+
+## Step 4 — test split (64 held-out BARE prompts, α*=0.075 selected on val)
+| config | AASR |
+|---|---|
+| **−r (negated Arditi refusal direction)** | **59/64 = 92.2%** |
+| Authority endorsement | 41/64 = 64.1% |
+| Logical appeal | 40/64 = 62.5% |
+| Expert Endorsement | 37/64 = 57.8% |
+| **Threats (weak-technique control)** | 34/64 = 53.1% |
+| Evidence-based | 33/64 = 51.6% |
+| Misrepresentation | 30/64 = 46.9% |
+| **random direction (norm-matched)** | **0/64 = 0.0%** |
+| **baseline (no intervention)** | **0/64 = 0.0%** |
+
+α sweep on val (Misrepresentation): 0.0125→11.3%, 0.025→32.3%, 0.05→37.1%,
+**0.075→43.5%**, 0.1→27.4%, ≥0.2 → model destroyed (degenerate output, ASR meaningless).
+Clean inverted-U; adding at all 32 layers compounds, so the usable α window is narrow.
+
+## Three conclusions
+1. **Real and direction-specific.** 47–64% vs 0% baseline, with a norm-matched random
+   direction at **0/64 and fluency 0.96** — it stays coherent and simply doesn't
+   jailbreak. Not generic activation damage.
+2. **NOT technique-specific.** Threats — the deliberately-weak control (4% compliance,
+   n=38) — steers at 53.1%, mid-pack. With the all-positive cross-technique cosine
+   matrix (0.39–0.89), the reading is that **any verified compliance-vs-refusal contrast
+   recovers one shared axis**; persuasion technique identity is not what's captured.
+3. **NOT novel — −r dominates.** 92.2% vs best-technique 64.1%, and −r was not even
+   α-tuned. The persuasion-derived directions behave as *degraded, noisier estimates of
+   the refusal axis*. Consistent with the cosine guard (cos(d_t, r) = −0.21…−0.67, none
+   near −1): each d_t is a partial projection onto the refusal axis, and its off-axis
+   component does not help. Misrepresentation is the most off-axis (+0.209) and the
+   **weakest** steerer (46.9%) — the off-refusal component is not useful for jailbreaking.
+
+**Net:** persuasion is an expensive way to rediscover (a worse version of) the refusal
+direction. Its power lives in the *input context the model reads* (PAP = 90%, Part 4),
+not in a separately-extractable compliance axis.
+
+## Caveats
+- α tuned on val for Misrepresentation only, then applied to all arms (incl. −r). Per-
+  technique α tuning not done; −r is if anything disadvantaged, strengthening conclusion 3.
+- d_t is per-layer; −r is a single vector applied at all layers (different parameterization).
+- Cross-technique matrix used matched n=38, throttled by Threats' small pool; a Threats-free
+  matrix would allow n=112 and be cleaner. Activation pools were not cached — re-run needed.
+- Fluency proxy (distinct-token ratio) catches repetition but NOT novel gibberish
+  (α=0.8 scored 1.00 while emitting Devanagari garbage). Use the samples too.
+
+## Files (Part 6)
+- `scripts/gen_compliance_data.py` — Step 1, batched PAP gen, resumable per technique
+- `scripts/label_compliance.py` — Step 2, 3-way labels + Table 1 → `results/compliance/`
+- `scripts/extract_compliance_directions.py` — Step 3, matched diff-in-means, cosine guard,
+  matched-n cross-technique matrix → `results/directions/`
+- `scripts/run_add_direction.py` — Step 4 intervention (+ `__random__`, `__baseline__`,
+  `__negrefusal__` arms) → `results/add_direction/`
+- `scripts/score_add_direction.py` — judge + fluency proxy → `results/add_direction/summary.md`
+- `scripts/sanity_ablation.py` — ablation gate (80% on this box, hooks verified)
+
+## Gotchas (Part 6)
+- `pgrep -f <script>` matches the *watcher's own command line* → false "RUNNING".
+  Verify with `nvidia-smi` utilization, not process name.
+- refusal_direction pipeline needs `jaxtyping` + `einops` (installed).
+- `score_with_gemma.py` BASE_MODEL is now env-overridable: `STRONGREJECT_BASE_MODEL=alpindale/gemma-2b`.
+- Launch long jobs with `setsid nohup ... &` — a session teardown killed an earlier run.
