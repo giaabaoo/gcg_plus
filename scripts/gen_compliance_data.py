@@ -38,8 +38,8 @@ K = 5                    # PAP variants per (prompt, technique)
 PERSUADE_MAX_NEW = 320
 TARGET_MAX_NEW = 512
 MIN_PAP_WORDS = 12       # reject degenerate rewrites that dropped the intent
-PERSUADE_BS = 4          # prompts per forward (x K return seqs); few-shot templates are long
-TARGET_BS = 12
+PERSUADE_BS = 8          # prompts per forward (x K return seqs); few-shot templates are long
+TARGET_BS = 32
 SEED = 42
 
 FEWSHOT = ["Misrepresentation", "Authority endorsement", "Logical appeal",

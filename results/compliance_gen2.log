@@ -1,0 +1,27 @@
+313 prompts x 6 techniques x k=5
+Loading NousResearch/Meta-Llama-3.1-8B-Instruct ...
+Loading checkpoint shards:   0%|          | 0/4 [00:00<?, ?it/s]Loading checkpoint shards:  50%|█████     | 2/4 [00:00<00:00, 11.52it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 13.60it/s]Loading checkpoint shards: 100%|██████████| 4/4 [00:00<00:00, 13.23it/s]
+[skip] Misrepresentation (exists)
+[skip] Authority endorsement (exists)
+
+=== Logical appeal : persuade ===
+  parsed 1367/1565 valid PAPs -> target decode
+/home/ubuntu/.local/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:590: UserWarning: `do_sample` is set to `False`. However, `temperature` is set to `0.6` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `temperature`.
+  warnings.warn(
+/home/ubuntu/.local/lib/python3.10/site-packages/transformers/generation/configuration_utils.py:595: UserWarning: `do_sample` is set to `False`. However, `top_p` is set to `0.9` -- this flag is only used in sample-based generation modes. You should set `do_sample=True` or unset `top_p`.
+  warnings.warn(
+  wrote 1367 rows -> /home/ubuntu/gcg_plus/results/compliance/raw_Logical_appeal.json
+
+=== Evidence-based Persuasion : persuade ===
+  parsed 1319/1565 valid PAPs -> target decode
+  wrote 1319 rows -> /home/ubuntu/gcg_plus/results/compliance/raw_Evidence-based_Persuasion.json
+
+=== Expert Endorsement : persuade ===
+  parsed 1230/1565 valid PAPs -> target decode
+  wrote 1230 rows -> /home/ubuntu/gcg_plus/results/compliance/raw_Expert_Endorsement.json
+
+=== Threats : persuade ===
+  parsed 1543/1565 valid PAPs -> target decode
+  wrote 1543 rows -> /home/ubuntu/gcg_plus/results/compliance/raw_Threats.json
+
+All techniques done.
