@@ -21,6 +21,11 @@ checkpoints/rphi_v2/
 # curated headline dirs are force-added in the initial commit.
 # add fresh scratch run dirs here as needed.
 
+# Part 7 raw activations: 945 MB of per-prompt residual-stream tensors.
+# Kept on disk for reuse (probes re-run off them in ~8 min); never committed.
+# Regenerate with scripts/earlytok/gen_ablated_samples.py (~2.5 h on one H100).
+results/earlytok/shards/
+
 # --- vendored tools: keep source, drop nested git + unused model runs ---
 tools/*/.git/
 tools/**/.git/

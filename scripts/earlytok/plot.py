@@ -41,14 +41,20 @@ def panel(ax, arm, title, subtitle, ylim):
         ax.plot(layers, ys, lw=2, color=SERIES[key], label=LABEL[key],
                 solid_capstyle="round")
 
-    for key, lab in REFS.items():
-        v = arm.get(key)
-        if v is None or (isinstance(v, float) and np.isnan(v)):
-            continue
+    # Reference lines often sit within ~0.02 of each other, so right-aligning
+    # every label stacks them into an unreadable pile. Stagger along x instead.
+    refs = [(k, lab, arm[k]) for k, lab in REFS.items()
+            if arm.get(k) is not None and arm.get(k) == arm.get(k)]
+    span = layers[-1] - layers[0]
+    for i, (key, lab, v) in enumerate(refs):
         ax.axhline(v, ls=(0, (4, 3)), lw=1.2, color=MUTED, zorder=1)
-        ax.annotate(f"{lab}  {v:.2f}", xy=(layers[-1], v), xytext=(-2, 3),
-                    textcoords="offset points", ha="right", va="bottom",
-                    fontsize=7.5, color=INK_2)
+        xf = [0.30, 0.62, 0.97][i % 3]
+        ax.annotate(f"{lab}  {v:.2f}",
+                    xy=(layers[0] + span * xf, v), xytext=(0, 4),
+                    textcoords="offset points",
+                    ha="right" if xf > 0.9 else "center", va="bottom",
+                    fontsize=7.5, color=INK_2,
+                    bbox=dict(boxstyle="square,pad=0.15", fc=SURFACE, ec="none"))
 
     ax.axhline(0.5, lw=1, color=GRID, zorder=0)
     ax.annotate("chance", xy=(0, 0.5), xytext=(2, -10), textcoords="offset points",

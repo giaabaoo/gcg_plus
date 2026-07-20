@@ -547,3 +547,105 @@ not in a separately-extractable compliance axis.
 - refusal_direction pipeline needs `jaxtyping` + `einops` (installed).
 - `score_with_gemma.py` BASE_MODEL is now env-overridable: `STRONGREJECT_BASE_MODEL=alpindale/gemma-2b`.
 - Launch long jobs with `setsid nohup ... &` — a session teardown killed an earlier run.
+
+---
+
+# PART 7 — Is actionability decodable from the first 10 response tokens? No
+
+**Question.** Among outputs the model complied with, is *eventual* actionability
+readable from the residual stream during the first 10 response tokens — before the
+content exists? If yes, the model has already committed to a plan at token 10.
+
+**Answer: no.** Early-token AUROC 0.551 vs a length baseline of 0.535 and a random
+floor of 0.515. Full-response pooling reaches 0.777 on identical folds, so the
+pipeline decodes actionability fine once content exists — just not at token 10.
+
+## The design correction that produced the result
+
+The original spec used greedy decode: one response per prompt. That makes response
+quality a **prompt-level** property, so a probe can win by reading *"does this request
+afford concrete steps"* rather than *"the model has committed"*. Fixed by sampling
+**k=5 per prompt at temp=1.0** and centering features within prompt, which cancels
+prompt affordance exactly. The pooled (uncentered) arm is kept as the secondary
+comparison — the gap between arms *is* the confound, measured.
+
+It is large. **Pooled early-token AUROC is 0.898.** That is the number the original
+design would have reported as a strong positive. Removing prompt affordance collapses
+it to 0.551. Nearly all apparent early-token decodability was prompt identity.
+
+The lexical baseline says the same from another angle: bag-of-ngrams over the first
+10 tokens' *text* scores 0.748 pooled, 0.505 within-prompt.
+
+## Gate (passed — this is a genuine negative, not an underpowered one)
+
+Ran before any probe, on sampled non-refusals only:
+```
+ICC(1)                     0.755     within-prompt variance is real
+var between / within       0.492 / 0.159
+median within-prompt SD    0.167     (threshold 0.15)
+median within-prompt range 0.391 ; 60.5% of prompts range >= 0.3
+score mean                 4.24/5, 8.0% below 3.0  -> not degenerate
+```
+
+## Results (`results/earlytok/summary.md`, `auroc_by_layer.png`)
+
+n=1525 sampled non-refusal responses over 310 prompts, 32 layers, d=4096, seed 1234.
+
+| arm | early (layer) | full (layer) | early_resid | length | lexical | random | permuted |
+|---|---|---|---|---|---|---|---|
+| **within_prompt** | **0.551** (L4) | 0.777 (L13) | 0.551 (L4) | 0.535 | 0.505 | 0.515 | 0.486 |
+| pooled | 0.898 (L14) | 0.944 (L13) | 0.881 (L14) | 0.537 | 0.748 | 0.483 | 0.487 |
+
+Length residualization changes nothing within-prompt (0.551 -> 0.551): there was no
+length-mediated signal to remove because there was no signal.
+
+## Judge note (matters for reading every earlier Part)
+
+HANDOFF has described the judge as "refusal 0 AND convincingness >=3 AND specificity
+>=3". That describes the **manual** rubric in SCORING_INSTRUCTIONS.md, not the
+automated judge. `scripts/score_with_gemma.py` loads a **distilled scalar** judge
+(qylu4156/strongreject-15k-v1) emitting one 1-5 expected value — no subscores. Every
+automated number in Parts 4-6 is that scalar at normalized >= 0.5.
+
+A specificity subscore therefore cannot be extracted, and the only rubric-annotated
+data here (`results/strongreject/scores/shards_0_1_scores.json`, 209 rows) has just
+**10 non-refusals** — too few to calibrate a replacement judge against. Part 7 uses
+the validated scalar's continuous expected score. It is a single deterministic forward
+pass, so judge noise is zero and all observed variance is generation variance; the
+step-6 "noise ceiling" is trivially 1.0 and the variance gate above is the real one.
+
+## Caveats
+- **65% of responses hit the 512-token cap**, so the length baseline is censored and
+  weaker than it should be. Raising the cap decouples pooled text from the judge's
+  512-token window, so it was left aligned instead.
+- Scores are **top-compressed** (mean 4.24/5): under ablation the model complies
+  richly and the judge has limited headroom above "good". Not degenerate by the
+  pre-set threshold, but it suppresses within-prompt contrast generally, so 0.551 is
+  a soft ceiling estimate rather than a precise one.
+- Conclusions are about the **ablated** model — the refusal axis is surgically removed
+  at all layers/positions during both generation and capture.
+- Probed with a linear probe on PCA-128. A nonlinear probe might find more; "not
+  linearly decodable at token 10" is the defensible claim.
+
+## Files (Part 7)
+- `scripts/earlytok/gen_ablated_samples.py` — generation + activation capture, resumable
+- `scripts/earlytok/score_samples.py` — scalar judge over all 1878 responses
+- `scripts/earlytok/variance_gate.py` — ICC + degeneracy gate (exit 3 = hard stop)
+- `scripts/earlytok/probe.py` — layerwise probes + all baselines
+- `scripts/earlytok/plot.py` — deliverable figure + summary.md
+- `scripts/earlytok/run_all.sh` — steps 2-5 chained
+- `results/earlytok/shards/` — 945 MB raw activations, **gitignored**, kept for reuse
+
+## Gotchas (Part 7)
+- **Thread oversubscription cost 20x.** `PCA(n_components=128)` on an ~870x4096 matrix
+  takes 0.46s at 1 BLAS thread and **9.42s at 26** — the matrix is too small to
+  parallelize and the threads thrash. Refit 960 times this was the entire runtime
+  (2.5 h -> 8 min). `probe.py` now pins OMP/OPENBLAS/MKL to 1 before importing numpy.
+  A 2630% CPU reading means thrashing here, not progress.
+- **A within-group label permutation is a no-op when labels are group-constant.** The
+  pooled arm's labels come from the global median, so a prompt's samples usually share
+  one label; shuffling inside the group reproduced the real labels and the "null"
+  returned 0.892. Pooled needs a *global* shuffle (now 0.487). Always sanity-check that
+  a null actually lands at chance.
+- The Part 6 `pgrep -f <script>` gotcha bit again — it matches the watcher's own
+  command line. Confirmed generation had finished by shard count, not process name.

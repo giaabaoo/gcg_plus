@@ -31,8 +31,9 @@ samples never straddle a fold):
   category     - prompt category only (pooled arm only; cancels when centered)
   random       - Gaussian noise, matched dim: the CV floor given n and
                  regularization. Confirms the pipeline is not inflating AUROC.
-  permuted     - real early features, labels shuffled within prompt: the
-                 stronger null.
+  permuted     - real early features, labels shuffled: the stronger null.
+                 Shuffled within prompt for the within-prompt arm, globally for
+                 the pooled arm (see the note at the permutation call).
 
 PCA is fit inside each training fold (never on held-out data).
 """
@@ -41,6 +42,15 @@ import glob
 import json
 import os
 import sys
+
+# Pin BLAS to one thread BEFORE numpy loads. The per-fold PCA is a randomized
+# SVD of an ~870x4096 matrix -- far too small to parallelize. Measured on this
+# box: 0.46s at 1 thread vs 9.42s at 26 threads, a 20x slowdown from pure thread
+# thrashing, which dominated total runtime (8 min vs 2.5 h). Layers are
+# independent, so real parallelism belongs across layers, not inside one SVD.
+for _v in ("OMP_NUM_THREADS", "OPENBLAS_NUM_THREADS", "MKL_NUM_THREADS",
+           "NUMEXPR_NUM_THREADS", "VECLIB_MAXIMUM_THREADS"):
+    os.environ[_v] = "1"
 
 import numpy as np
 import torch
@@ -245,10 +255,19 @@ def main():
         # permutation null at the best early layer
         best_l = max(range(L), key=lambda l: (arm["layers"][str(l)]["early"]
                                               if not np.isnan(arm["layers"][str(l)]["early"]) else -1))
+        # The null must destroy the label-feature link WITHOUT being a no-op.
+        # Within-prompt arm: labels are assigned per prompt, so shuffling inside
+        # a group is a real permutation. Pooled arm: labels come from the GLOBAL
+        # median, so a prompt's samples usually share one label and a
+        # within-group shuffle changes nothing -- it reproduced the real labels
+        # and returned 0.892. Pooled therefore needs a global shuffle.
         yp = y.copy()
-        for gg in np.unique(g):
-            m = g == gg
-            yp[m] = rng.permutation(yp[m])
+        if within:
+            for gg in np.unique(g):
+                m = g == gg
+                yp[m] = rng.permutation(yp[m])
+        else:
+            yp = rng.permutation(yp)
         arm["permuted_at_best_layer"] = cv_auroc(Ek[:, best_l], yp, g)
         arm["best_early_layer"] = int(best_l)
         print(f"  best early layer={best_l} "
