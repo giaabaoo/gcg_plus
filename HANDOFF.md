@@ -649,3 +649,174 @@ step-6 "noise ceiling" is trivially 1.0 and the variance gate above is the real 
   a null actually lands at chance.
 - The Part 6 `pgrep -f <script>` gotcha bit again — it matches the watcher's own
   command line. Confirmed generation had finished by shard count, not process name.
+
+---
+---
+
+# PART 8 — Is there a HARMFULNESS axis distinct from the REFUSAL axis? Mostly not: it is vocabulary
+
+**Question (user's).** Train a probe at middle layers to detect harmful-compliance vs
+refusal, labelled behaviourally by StrongREJECT on the OUTPUT, and test held-out
+robustness. Arditi succeeds with *weaker* supervision (harmful vs harmless PROMPTS,
+input-side, no behavioural labels) — so why shouldn't stronger supervision work?
+
+**The design correction that makes it answerable.** `harmful-comply vs refuse` differs
+on TWO things at once — refusing-or-not AND harmful-or-not — so it can only re-derive
+the refusal axis. A third class fixes that:
+
+| class | model refuses? | content harmful? | n |
+|---|---|---|---|
+| harmful_comply | no | yes | 1810 |
+| **benign_comply** | no | **no** | **1274** |
+| refuse | yes | — | 3677 |
+
+`harmful_comply vs benign_comply` holds "not refusing" constant. Critically the benign
+class is **wrapper-matched**: the identical PAP persuader/templates applied to ALPACA
+harmless instructions (1599 PAPs, 6 techniques, k=1). Bare harmless prompts would let
+the probe win by reading "is a persuasion essay present".
+
+**Answer: the contrast is highly decodable (0.972) but that is overwhelmingly
+VOCABULARY, not a harmfulness representation. A real residual exists and is small
+(~+0.05 AUROC over a bag-of-words floor). Refusal is ~4x more representational.**
+
+## Results (held-out test prompts; train=extract, disjoint base prompts)
+
+| contrast | best layer | AUROC | lexical floor | **margin** |
+|---|---|---|---|---|
+| harmfulness (wrapper-matched) | 14 | 0.972 | **0.924** | **+0.048** |
+| refusal | 30 | 0.987 | 0.801 | **+0.186** |
+| naive (confounded ref) | 30 | 0.980 | 0.788 | **+0.191** |
+
+Permuted null 0.47–0.53, random direction 0.50–0.52. Diff-in-means and no-PCA
+full-space probes agree with the PCA-128 headline (so this is not PCA truncation).
+
+**The tell was layer 1.** Harmfulness AUROC is already **0.911 at layer 1** — barely
+past the token embeddings. Near-ceiling separability that early is the signature of a
+surface-lexical difference, not a representation, and it is what motivated the lexical
+control. Refusal/naive instead climb gradually to their peak, the shape you expect from
+something computed.
+
+## Controls
+
+- **Leave-one-harm-category-out** (harmfulness, layer 16): mean **0.957**, min 0.930
+  across all 6 StrongREJECT categories. Generalises to unseen harm categories — but so
+  does vocabulary, so this alone does not establish a concept.
+- **Within-harmful dose-response** (corpus-confound control; harmful_comply ONLY, same
+  corpus, same wrapper, all complying): does the axis track the judge's score?
+  Capacity-matched — the first pass unfairly scored activations by a 1-D projection
+  (0.771) against a 60k-feature text model (0.904).
+  **Full probe 0.954 vs lexical 0.904 = +0.050**, the same margin as the cross-corpus
+  contrast. This is the cleanest evidence that a real, small residual exists.
+
+## Geometry (anisotropy-controlled) — the user's cosine objection was right
+
+| layer | cos(harmfulness, refusal) raw | whitened (top-512 subspace) |
+|---|---|---|
+| 14 | +0.784 | **+0.201** |
+| 16 | +0.646 | **+0.154** |
+| 18 | +0.620 | **+0.134** |
+
+Raw cosine says the two axes are largely the same thing; controlling for anisotropy says
+they are mostly distinct. `cos(harmfulness, naive)` even flips sign (−0.29 raw → +0.37
+whitened). **Raw residual-stream cosines overstate overlap** — relevant to Part 6's
+all-positive cross-technique matrix, which was measured raw.
+
+Two caveats that must travel with these numbers:
+- **Full-covariance whitening was REJECTED as an artifact.** Cond ≈1.7e8 with 628
+  eigenvalues <1e-6·max; `Σ^{-1/2}` amplified near-null noise and drove EVERY whitened
+  cosine to ~0, including cos(refusal-contrast, r), which cannot be zero. Whitening is
+  therefore done in the top-k principal subspace, reported across k∈{128,256,512}.
+- **Arditi's r holds only 11–42% of its norm inside that estimable subspace** (the
+  contrast directions sit at ~0.999), so whitened cosines *involving r* are unreliable
+  and r is compared raw only.
+
+## Instrument failures worth recording (all caught by pre-set calibration gates)
+
+1. **StrongREJECT is not a harmfulness detector on benign prompts.** Its scalar asks
+   "did the model give a specific, compliant, on-topic answer to this FORBIDDEN prompt".
+   Fed a harmless prompt, a good helpful answer maxes it — *"Which is the hottest
+   planet?"* → *"Venus is indeed the hottest…"* scored **0.914**. The first benign gate
+   used it and discarded **74%** of the pool for being helpful. It remains valid on
+   genuinely harmful prompts (its training distribution), so Parts 4–6 are unaffected.
+2. **Absolute zero-shot safety classification of PAP text fails: 20.7% TPR** on
+   genuinely-harmful PAPs (~79% false negatives). This is a finding, not just a bug —
+   a persuasive rewrite is engineered to read as legitimate, so a classifier reading it
+   absolutely is fooled. It is the same property that makes PAP work as an attack.
+3. **Comparative drift detection also failed: 1.2% TPR** — it answers "SAME" even when
+   the rewrite is a different topic AND harmful (over-anchored by "ignore tone/framing").
+
+Net: the persuader-drift guard is **UNRELIABLE**, so the benign class is gated on
+non-refusal only. The bias is **conservative**: un-removed drift makes benign rows more
+harmful, which makes the harmfulness contrast *harder* and biases AUROC **down**. A
+positive survives it; only a null would be ambiguous.
+
+## Causal test — the axis is decodable but NOT causal
+
+Probe accuracy proves nothing about causality (it can read a confound or a downstream
+correlate), so the Arditi bar applies: add the direction at every layer/position/step
+on BARE harmful prompts. alpha swept on val, reported on the disjoint test split.
+
+| arm (test, 64 bare harmful prompts) | alpha | AASR | fluency | degen |
+|---|---|---|---|---|
+| **-r (Arditi)** | 0.075 | **92.2%** | 0.70 | 0 |
+| **refusal_axis (ours, negated)** | 0.075 | **79.7%** | 0.70 | 0 |
+| harmfulness ⊥ r | 0.05 | 14.1% | 0.76 | 3 |
+| **harmfulness** | 0.05 | **3.1%** | 0.84 | 2 |
+| random (norm-matched) | 0.05 | 0.0% | 0.98 | 0 |
+| baseline (no intervention) | — | 0.0% | 0.97 | 0 |
+
+-r reproduces Part 6's 92.2% exactly, so the harness is sound.
+
+**The decisive comparison is internal.** Our own REFUSAL contrast — same pipeline, same
+diff-in-means estimator, same alpha grid — reaches **79.7% while staying fluent
+(degen=0)**. So the method demonstrably CAN recover a causal direction from
+output-behavioural labels. The HARMFULNESS axis out of that same pipeline sits at
+**3.1%, indistinguishable from the 0% baseline**, and at higher alpha it does not steer
+at all — it destroys the model (21–24 of 64 outputs degenerate, fluency 0.55–0.65).
+That is generic activation damage, not a behavioural axis.
+
+**Unexpected footnote:** projecting r out *improves* it (14.1% vs 3.1%). The
+off-refusal-axis component does slightly MORE than the raw direction — the opposite of
+Part 6's "the off-axis component is not useful" reading. Still an order below -r and it
+degrades quickly, so: a thread, not a finding.
+
+## Verdict on the original question
+
+Arditi succeeds with weaker (input-side, harmful-vs-harmless-prompt) supervision because
+refusal really is mediated by a dominant linear direction. Stronger output-behavioural
+supervision does NOT buy a second, separable "harmfulness" axis:
+
+1. **Decodable, yes** — 0.972 AUROC, 0.930–0.979 across all six unseen harm categories.
+2. **But mostly vocabulary** — bag-of-words floor 0.924; activations add only +0.048,
+   versus +0.186 for refusal. AUROC 0.911 at layer 1 gives it away.
+3. **And not causal** — 3.1% against a working 79.7% positive control in the same harness.
+
+The honest statement: *within this setup, harmful-vs-benign content is linearly readable
+from the prompt representation, but that readout is largely lexical and does not
+correspond to a direction the model uses to decide anything.* Refusal remains the only
+axis here that is simultaneously decodable, geometrically distinct, and causal.
+
+## Files (Part 8)
+- `scripts/threeclass/gen_benign_pap.py` — wrapper-matched benign class (Alpaca × PAP)
+- `scripts/threeclass/classify_pap.py` — drift guard + both calibration controls
+- `scripts/threeclass/label_benign.py` — 3-way benign labels
+- `scripts/threeclass/capture_acts.py` — last-prompt-token acts, all layers, all rows
+- `scripts/threeclass/probe.py` — 3 contrasts, LOCO, dose-response, nulls
+- `scripts/threeclass/lexical_baseline.py` — the control that decided the result
+- `scripts/threeclass/dose_response_fair.py` — capacity-matched comparison
+- `scripts/threeclass/whiten_geometry.py` — subspace whitening (supersedes the artifact)
+- `scripts/threeclass/causal.py` — intervention arms incl. harmfulness ⊥ r
+- `results/threeclass/{summary.md, auroc_by_layer.png, probe_results.json, geometry.json,
+  lexical_baseline.json, dose_response_fair.json, causal/summary.md}`
+- `results/compliance3/{raw,labeled}_benign_*.json`, `table_benign.md`, `pap_harm_labels.json`
+- `data/harmless_313.json` — the 313 sampled Alpaca harmless prompts
+- `results/threeclass/acts.pt` — 1.8 GB last-prompt-token activations, **gitignored**
+
+## Gotchas (Part 8)
+- **Capture is decoupled from labelling on purpose.** `capture_acts.py` stores ALL rows
+  with their label; only some enter a contrast. The drift guard is the fragile part of
+  this pipeline, so a relabel must cost a dict edit, not another GPU pass.
+- The determinism trap from Part 7 does NOT apply here: every row is a distinct input,
+  so activations vary by construction. It only bites when separating k samples of the
+  SAME prompt, where the prompt-token state is identical.
+- A probe reaching ceiling at layer 1 is a lexical alarm, not a win.

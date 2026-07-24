@@ -1,0 +1,179 @@
+{
+  "method": "whitening restricted to top-k PCA subspace of extract activations",
+  "note": "full-covariance whitening was rejected: cond ~1.7e8, 628 eigenvalues <1e-6*max, which drove all whitened cosines to ~0 (artifact)",
+  "ks": [
+    128,
+    256,
+    512
+  ],
+  "layers": {
+    "14": {
+      "raw": {
+        "r|refusal": 0.2457,
+        "harmfulness|r": 0.2653,
+        "harmfulness|refusal": 0.7845,
+        "harmfulness|naive": -0.2895,
+        "naive|r": -0.1348,
+        "naive|refusal": -0.8207
+      },
+      "whitened": {
+        "128": {
+          "r|refusal": 0.1193,
+          "harmfulness|r": 0.1611,
+          "harmfulness|refusal": 0.2537,
+          "harmfulness|naive": 0.31,
+          "naive|r": -0.0271,
+          "naive|refusal": -0.841
+        },
+        "256": {
+          "r|refusal": 0.0445,
+          "harmfulness|r": 0.1155,
+          "harmfulness|refusal": 0.2308,
+          "harmfulness|naive": 0.3375,
+          "naive|r": 0.0218,
+          "naive|refusal": -0.838
+        },
+        "512": {
+          "r|refusal": 0.0214,
+          "harmfulness|r": 0.087,
+          "harmfulness|refusal": 0.2005,
+          "harmfulness|naive": 0.3721,
+          "naive|r": 0.0286,
+          "naive|refusal": -0.8347
+        }
+      },
+      "subspace_energy": {
+        "128": {
+          "r": 0.2869,
+          "refusal": 0.9996,
+          "harmfulness": 0.9994,
+          "naive": 0.9983
+        },
+        "256": {
+          "r": 0.3376,
+          "refusal": 0.9998,
+          "harmfulness": 0.9997,
+          "naive": 0.9992
+        },
+        "512": {
+          "r": 0.4224,
+          "refusal": 0.9999,
+          "harmfulness": 0.9999,
+          "naive": 0.9996
+        }
+      }
+    },
+    "16": {
+      "raw": {
+        "r|refusal": 0.1479,
+        "harmfulness|r": 0.1652,
+        "harmfulness|refusal": 0.6465,
+        "harmfulness|naive": -0.2656,
+        "naive|r": -0.0959,
+        "naive|refusal": -0.9072
+      },
+      "whitened": {
+        "128": {
+          "r|refusal": 0.0873,
+          "harmfulness|r": 0.1829,
+          "harmfulness|refusal": 0.2085,
+          "harmfulness|naive": 0.3314,
+          "naive|r": 0.0132,
+          "naive|refusal": -0.8537
+        },
+        "256": {
+          "r|refusal": 0.0501,
+          "harmfulness|r": 0.0775,
+          "harmfulness|refusal": 0.182,
+          "harmfulness|naive": 0.3661,
+          "naive|r": -0.0057,
+          "naive|refusal": -0.8483
+        },
+        "512": {
+          "r|refusal": 0.0195,
+          "harmfulness|r": 0.0557,
+          "harmfulness|refusal": 0.1536,
+          "harmfulness|naive": 0.401,
+          "naive|r": 0.0121,
+          "naive|refusal": -0.8436
+        }
+      },
+      "subspace_energy": {
+        "128": {
+          "r": 0.164,
+          "refusal": 0.9998,
+          "harmfulness": 0.9992,
+          "naive": 0.9993
+        },
+        "256": {
+          "r": 0.2306,
+          "refusal": 0.9999,
+          "harmfulness": 0.9997,
+          "naive": 0.9997
+        },
+        "512": {
+          "r": 0.2986,
+          "refusal": 1.0,
+          "harmfulness": 0.9999,
+          "naive": 0.9999
+        }
+      }
+    },
+    "18": {
+      "raw": {
+        "r|refusal": 0.0894,
+        "harmfulness|r": 0.1198,
+        "harmfulness|refusal": 0.6198,
+        "harmfulness|naive": -0.3095,
+        "naive|r": -0.0554,
+        "naive|refusal": -0.9381
+      },
+      "whitened": {
+        "128": {
+          "r|refusal": 0.115,
+          "harmfulness|r": 0.2411,
+          "harmfulness|refusal": 0.1745,
+          "harmfulness|naive": 0.3591,
+          "naive|r": 0.0175,
+          "naive|refusal": -0.8563
+        },
+        "256": {
+          "r|refusal": 0.0262,
+          "harmfulness|r": 0.1264,
+          "harmfulness|refusal": 0.1589,
+          "harmfulness|naive": 0.387,
+          "naive|r": 0.0432,
+          "naive|refusal": -0.8488
+        },
+        "512": {
+          "r|refusal": 0.0146,
+          "harmfulness|r": 0.0434,
+          "harmfulness|refusal": 0.1342,
+          "harmfulness|naive": 0.4169,
+          "naive|r": 0.01,
+          "naive|refusal": -0.8448
+        }
+      },
+      "subspace_energy": {
+        "128": {
+          "r": 0.1073,
+          "refusal": 0.9999,
+          "harmfulness": 0.9991,
+          "naive": 0.9996
+        },
+        "256": {
+          "r": 0.1556,
+          "refusal": 0.9999,
+          "harmfulness": 0.9996,
+          "naive": 0.9998
+        },
+        "512": {
+          "r": 0.2367,
+          "refusal": 1.0,
+          "harmfulness": 0.9999,
+          "naive": 0.9999
+        }
+      }
+    }
+  }
+}

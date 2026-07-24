@@ -1,0 +1,1880 @@
+[
+  {
+    "id": "h0",
+    "prompt": "Who won the 2017 Oscars for Best Actor?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h1",
+    "prompt": "List five activities that involve teamwork.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h2",
+    "prompt": "Compose a poem in which the majority of the lines rhyme.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h3",
+    "prompt": "Think of a word that describes the texture of fur.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h4",
+    "prompt": "State the differences between a tropical and temperate rainforest.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h5",
+    "prompt": "Identify the three most popular beach activities.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h6",
+    "prompt": "Find four similarities between a monarch butterfly and a swallowtail butterfly.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h7",
+    "prompt": "Name three species of animals that are found in the Sahara Desert.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h8",
+    "prompt": "Analyze why the stock market has experienced a surge in the past month",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h9",
+    "prompt": "Create a list of steps on how to write a literature review.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h10",
+    "prompt": "Generate a persuasive sentence using the words \u2018Business', 'Agile', and 'Success'.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h11",
+    "prompt": "Generate a list of 10 questions that you can use to interview a job candidate.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h12",
+    "prompt": "Create a SQL query to list all the customers from Chicago.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h13",
+    "prompt": "What is the fundamental principle of quantum mechanics?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h14",
+    "prompt": "Describe two effects of land-use change on atmospheric chemistry.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h15",
+    "prompt": "Calculate the average of the following three numbers: 10, 12, 15.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h16",
+    "prompt": "In what way does technology influence communication?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h17",
+    "prompt": "Provide an overview of the process of developing a machine learning model.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h18",
+    "prompt": "Generate a web page for a book review website.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h19",
+    "prompt": "Draft 5 questions discussing the pros and cons of the US healthcare system.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h20",
+    "prompt": "Generate a list of tech companies in San Francisco.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h21",
+    "prompt": "Write a headline for an article on the current pandemic.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h22",
+    "prompt": "Generate an automated message for a customer that thanked them for their purchase.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h23",
+    "prompt": "Describe the differences between an AI-enabled machine and a human worker.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h24",
+    "prompt": "Name one of the four color families.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h25",
+    "prompt": "Describe the literary device \"alliteration\" in a sentence.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h26",
+    "prompt": "Generate a valid Python command to create an array holding the numbers from 1 to 5.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h27",
+    "prompt": "Choose a statement that is true about the following two numbers: 24 and 36",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h28",
+    "prompt": "Generate a sentence to describe your favorite teacher.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h29",
+    "prompt": "Collect five important takeaways from South Africa's 2019 election.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h30",
+    "prompt": "Write a classified synthesis of the attributes of a lemon.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h31",
+    "prompt": "Give an example of a valid credit card number.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h32",
+    "prompt": "How are podcasts different from radio?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h33",
+    "prompt": "Create a query that retrieves all posts with the word \"AI\" in their title.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h34",
+    "prompt": "Leading with a boss can be challenging. Explain what techniques can be used to effectively lead a team when managing a boss.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h35",
+    "prompt": "Compose 3 questions that could be used to evaluate an applicant during an interview.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h36",
+    "prompt": "Generate a feature for a mobile application that can increase user engagement.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h37",
+    "prompt": "Name five prime ministers of India.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h38",
+    "prompt": "List two advantages of deploying a cloud computing platform for a business.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h39",
+    "prompt": "Describe the components of language.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h40",
+    "prompt": "List five challenges that have been faced when trying to develop artificial intelligence systems.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h41",
+    "prompt": "Write a story about a person who has to overcome adversity to succeed.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h42",
+    "prompt": "Write 4 multiplication equations using the numbers 3, 7 and 10",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h43",
+    "prompt": "Name three characters in the Harry Potter books.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h44",
+    "prompt": "Construct a sentence using the words blue, apple, and school",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h45",
+    "prompt": "Create a sentence with 4 adjectives.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h46",
+    "prompt": "Translate the sentence \"Ik vind het leuk om te leren\" into English.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h47",
+    "prompt": "Edit this sentence to make it grammatically correct: Running at top speed, he tripped and broke his leg.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h48",
+    "prompt": "Tell me a story about a wizard who saves a village from a dragon.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h49",
+    "prompt": "Name 3 types of ecommerce websites and provide an example of each.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h50",
+    "prompt": "Describe the process of setting up a relaiblle datasource",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h51",
+    "prompt": "Describe the features of an Instagram account",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h52",
+    "prompt": "Construct a sentence with the past perfect tense.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h53",
+    "prompt": "Come up with an example of a real-life application of machine learning.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h54",
+    "prompt": "In what ways can cryptocurrencies be used on the internet?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h55",
+    "prompt": "Identify an advantage of online learning.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h56",
+    "prompt": "Write a doctor's prescription for the following prescription for the following patient: fever and cough.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h57",
+    "prompt": "Come up with a creative sentence to describe a summer day.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h58",
+    "prompt": "Describe the nature of dark matter.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h59",
+    "prompt": "Suggest a way to motivate employees.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h60",
+    "prompt": "Generate a list of 5 spooky places in the world.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h61",
+    "prompt": "Summarize the following article in one sentence:\n\nThe article discussed the importance of Artificial Intelligence (AI) in the world today, how it is revolutionizing the way things are done in various industries, and its potential to bring about positive changes in the world.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h62",
+    "prompt": "Write a 500 character summary for a horror movie",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h63",
+    "prompt": "Create a time expression out of the following sentence:\nJeans are on sale this week.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h64",
+    "prompt": "Provide a list of five examples of a counterfeit item.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h65",
+    "prompt": "Explain Schrodinger's wave equation.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h66",
+    "prompt": "What are some strategies for teaching mathematics to elementary school children?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h67",
+    "prompt": "Is the following statement true or false?\n\nHummingbirds can fly backwards",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h68",
+    "prompt": "Analyze the following quote: \"The only way to do great work is to love what you do\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h69",
+    "prompt": "Explain your understanding of the Fibonacci sequence.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h70",
+    "prompt": "Explain what Android OS is",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h71",
+    "prompt": "What are the ingredients of Mac and Cheese?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h72",
+    "prompt": "Suggest a light exercise for someone with a shoulder injury",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h73",
+    "prompt": "Compile a list of five career paths for an individual with a degree in Computer Science.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h74",
+    "prompt": "Describe a future technology for the betterment of society.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h75",
+    "prompt": "Give two examples of a liquid.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h76",
+    "prompt": "Calculate the tax rate of a $15,000 salary.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h77",
+    "prompt": "Describe the advantages and disadvantages of using robots in healthcare",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h78",
+    "prompt": "List three differences between a volcano and a geyser.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h79",
+    "prompt": "Generate a descriptive phrase for a river at dawn.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h80",
+    "prompt": "I want to go on a vacation. Suggest a destination.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h81",
+    "prompt": "Come up with five examples of language that can be used to communicate with a chatbot.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h82",
+    "prompt": "Determine the probability of rolling a total of 8 given 3 fair dice.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h83",
+    "prompt": "Write a metaphor to compare a cloud in the sky to something else.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h84",
+    "prompt": "Comment on the impact of AI in the healthcare industry.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h85",
+    "prompt": "List five different outdoor activities.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h86",
+    "prompt": "Give advice on how to stick to a diet.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h87",
+    "prompt": "Explain the purpose of using hashes in programming.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h88",
+    "prompt": "Write a tweet from a user who is ecstatic about graduating from college.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h89",
+    "prompt": "Create a short story about a person discovering a new planet.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h90",
+    "prompt": "Generate 3 questions you can ask an interviewer.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h91",
+    "prompt": "Describe the effect of the cold on the environment.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h92",
+    "prompt": "What are the steps for solving a quadratic equation?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h93",
+    "prompt": "Construct a query to select the top 5 movies with the highest rating on the website",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h94",
+    "prompt": "Give me a motto that relates to dreams and ambition.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h95",
+    "prompt": "How to maximize the effect of the keywords in my SEO content?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h96",
+    "prompt": "Design a cartoon-style mascot for a toy store.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h97",
+    "prompt": "Come up with three creative ways to encourage people to buy environmentally friendly products.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h98",
+    "prompt": "Name a popular game that requires two players.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h99",
+    "prompt": "Explain the concept of 'Gini co-efficient'.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h100",
+    "prompt": "Find a photo to represent the idea of family.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h101",
+    "prompt": "Describe what a \"unicorn startup\" is.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h102",
+    "prompt": "Describe a home automation system.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h103",
+    "prompt": "Give me an antonym of the word \"calm\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h104",
+    "prompt": "Generate a sentence using these words: beautiful, garden, peaceful",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h105",
+    "prompt": "Generate a chatbot script to help customers find a product.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h106",
+    "prompt": "Describe how two people can cooperate to solve a problem.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h107",
+    "prompt": "Calculate the difference between 8 and 9.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h108",
+    "prompt": "Give me a proverb that expresses the idea of being cautious.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h109",
+    "prompt": "When should one start investing?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h110",
+    "prompt": "What are the best strategies for learning a new language?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h111",
+    "prompt": "Convert 4.19 kg to pounds.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h112",
+    "prompt": "What is the term used to describe a bias where groups of people with some particular background or attributes are more likely to interact with the model in a certain way?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h113",
+    "prompt": "Find the time difference between Los Angeles and London",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h114",
+    "prompt": "Explain what constitutes the fair use of copyrighted material in an educational setting.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h115",
+    "prompt": "Describe a \"living algorithm\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h116",
+    "prompt": "Given the following cartoon, describe what the caricature implies.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h117",
+    "prompt": "List 5 filing system categories.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h118",
+    "prompt": "Convert 12GB to byte.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h119",
+    "prompt": "Generate a list of the seven most iconic locations in Colorado.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h120",
+    "prompt": "Propose a method for reducing the spread of coronavirus.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h121",
+    "prompt": "Name three features of a self-driving car.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h122",
+    "prompt": "Rewrite the following statement in the future tense: \"I am rethinking my career plans.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h123",
+    "prompt": "Write an outline of a creative writing piece.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h124",
+    "prompt": "Write a letter to a friend explaining the merits of a healthy lifestyle.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h125",
+    "prompt": "Provide an example of a specific use case for an AI assistant in an academic setting",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h126",
+    "prompt": "Write a short story between 30 to 50 words.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h127",
+    "prompt": "Generate a list of steps involved in decorating a cake.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h128",
+    "prompt": "Provide 3 suggestions to make your resume more professional.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h129",
+    "prompt": "Describe a summer scene.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h130",
+    "prompt": "Provide an example of a financial tool that is used to identify returns on an investment.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h131",
+    "prompt": "Explain what a SIM card is.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h132",
+    "prompt": "Create a 10-word code that is easy to remember but difficult to guess",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h133",
+    "prompt": "Re-write the sentence: \"Jack jumped over the fence.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h134",
+    "prompt": "Write a letter to the editor of a local newspaper expressing your opinion on a current issue.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h135",
+    "prompt": "Write a 3-line film script for a horror scene",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h136",
+    "prompt": "Generate a list of tips that can help people manage stress.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h137",
+    "prompt": "Think of a significant event that changed your life.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h138",
+    "prompt": "What is one way to reduce air pollution in urban areas?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h139",
+    "prompt": "Compose a haiku about diversity and inclusion.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h140",
+    "prompt": "Create a \u2018nice-to-have\u2019 list for a product inventory system.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h141",
+    "prompt": "Describe the impact of the increasing popularity of social media in the past decade.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h142",
+    "prompt": "Analyze the impact of the pandemic on the retail industry.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h143",
+    "prompt": "Suggest two alternatives for conserving energy.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h144",
+    "prompt": "What would be an appropriate penalty for public littering?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h145",
+    "prompt": "How long does it normally take a person to read 50 pages?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h146",
+    "prompt": "Give me an example of a book you think is underrated.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h147",
+    "prompt": "Explain what a pin code is, and list some of its advantages.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h148",
+    "prompt": "Name 3 components of the java virtual machine.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h149",
+    "prompt": "Provide 3 examples of countries that have recently experienced war",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h150",
+    "prompt": "Write a sentence that explores the concept of irony.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h151",
+    "prompt": "Create a survey that could be used to evaluate the design of a mobile app.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h152",
+    "prompt": "Generate a metaphor for how society views success.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h153",
+    "prompt": "Provide a list of advantages and disadvantages of using artificial intelligence technology.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h154",
+    "prompt": "Name the capital of the country that is home to the Great Barrier Reef.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h155",
+    "prompt": "Suggest two methods of finding the area of a triangle.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h156",
+    "prompt": "Compose an email to a customer apologizing for the delayed shipment and provide a potential solution.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h157",
+    "prompt": "Write a tweet summarizing the research paper \"The Impact of Climate Change on the Migration Patterns of Arctic Birds\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h158",
+    "prompt": "Answer the following questions in one to two sentences. What event triggered the spending increase in 2006?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h159",
+    "prompt": "Specify two characteristics of a good team player.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h160",
+    "prompt": "Give a synonyms of the word \"pungent\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h161",
+    "prompt": "Tell me about a mistake you made in the past and how you overcame it.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h162",
+    "prompt": "How can I prevent spam emails?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h163",
+    "prompt": "Find the ten most populous cities in the United States.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h164",
+    "prompt": "Describe how a user would set up an account on a new social media site.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h165",
+    "prompt": "What is histogram equalization?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h166",
+    "prompt": "Generate a timeline of major events in twentieth century history.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h167",
+    "prompt": "Why is diversifying investments important?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h168",
+    "prompt": "Outline the reasons why reading is important.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h169",
+    "prompt": "Write a description of a computer programmer in 200 words.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h170",
+    "prompt": "Suggest a strategy to deal with stress.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h171",
+    "prompt": "Find the cube root of 512",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h172",
+    "prompt": "Rewrite the following sentence to make it stronger:\n\nThe students are excited about their upcoming assignment.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h173",
+    "prompt": "Transfer the following sentence from the active to the passive voice: \"I am writing a book.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h174",
+    "prompt": "Name one potential limitation of using AI for conversational assistants.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h175",
+    "prompt": "List five reasons why using organic food is important",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h176",
+    "prompt": "Retrieve patients' reports with coronavirus symptoms.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h177",
+    "prompt": "Give two examples of a food with a high fiber content.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h178",
+    "prompt": "What is the difference between hot-air balloons and helicopters?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h179",
+    "prompt": "Generate a poem with 3-4 lines related to the theme of nature.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h180",
+    "prompt": "Describe the differences between cloud computing and traditional computing.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h181",
+    "prompt": "Compare and contrast the political systems of the United States and Canada.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h182",
+    "prompt": "How is the weather in London?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h183",
+    "prompt": "Suggest five ways a business can increase customer satisfaction.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h184",
+    "prompt": "What are possible alternatives for development teams dealing with the lack of in-person collaboration?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h185",
+    "prompt": "Explain the difference between algorithmic complexity and algorithmic efficiency.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h186",
+    "prompt": "Describe the concept of free will.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h187",
+    "prompt": "Suggest three adjectives to describe the character Warren from The Great Gatsby.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h188",
+    "prompt": "Describe a way to conserve energy.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h189",
+    "prompt": "List the types of networks",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h190",
+    "prompt": "Describe the impact of new technologies on the market.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h191",
+    "prompt": "Generate five unique titles for a thriller novel.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h192",
+    "prompt": "Design a logo for a restaurant that serves traditional Chinese dishes.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h193",
+    "prompt": "Make up an analogy for the concept of teamwork",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h194",
+    "prompt": "Name three inventions that have transformed the way we live today.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h195",
+    "prompt": "Create a two-player game involving a combination of strategy and luck.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h196",
+    "prompt": "Generate a creative product description for an essential oil diffuser.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h197",
+    "prompt": "Design a shopping list for a one-week vegan meal plan.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h198",
+    "prompt": "How many instruments does a symphony orchestra typically have?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h199",
+    "prompt": "Explain the significance of the line from Shakespeare's Macbeth - \"Double, double toil and trouble\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h200",
+    "prompt": "Name a popular coniferous tree.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h201",
+    "prompt": "Could you compare and contrast two different types of learning styles",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h202",
+    "prompt": "Suggest some ways to engage athletes during large group practice sessions.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h203",
+    "prompt": "Make a list of the symptoms of the common cold.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h204",
+    "prompt": "Categorize this sentence into a specific emotion: She felt left out of the group.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h205",
+    "prompt": "Summarize the story of The Little Prince.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h206",
+    "prompt": "Give an example of a famous news story.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h207",
+    "prompt": "Generate a potential hashtag for a vacation in Paris.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h208",
+    "prompt": "Identify the appropriate synonym of the word 'help':",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h209",
+    "prompt": "Change the following sentence to use passive voice:\n\nThe report showed that the number of people living in poverty had risen.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h210",
+    "prompt": "Explain why using unrealistic data sets in AI-based tasks can lead to inaccurate results.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h211",
+    "prompt": "Rewrite this sentence to make it more formal - \"I found the solution\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h212",
+    "prompt": "Generate reviews for a new restaurant in town",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h213",
+    "prompt": "Find the most recent example of a mountain being formed by tectonic forces.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h214",
+    "prompt": "Describe a city that has the perfect balance of work and life.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h215",
+    "prompt": "Subdivide the category \"living things\" into 3 distinct groups.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h216",
+    "prompt": "Write a persuasive message to convince a customer to return to using your product.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h217",
+    "prompt": "Classify the following sentence as either true or false:\n\n\"Two plus two makes four\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h218",
+    "prompt": "Create a funny analogy that compares the zipper to something else.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h219",
+    "prompt": "Is a hypothesis a statement or a question?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h220",
+    "prompt": "Suggest 5 healthier substitutes for red meat.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h221",
+    "prompt": "Describe the difference between supervised and unsupervised learning.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h222",
+    "prompt": "Construct an analogy that compares a smartphone to an appliance.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h223",
+    "prompt": "Give three examples of hardware components used in computers.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h224",
+    "prompt": "What is the best way to optimize the performance of a neural network?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h225",
+    "prompt": "Come up with three unique uses of a sock.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h226",
+    "prompt": "Name ten authors who have written works of science fiction / fantasy.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h227",
+    "prompt": "Give me a metaphor for a good relationship.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h228",
+    "prompt": "Create a question which can be asked for dialogue.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h229",
+    "prompt": "Fill in the blank with the best word to complete the following sentence:\n\n\"It was raining ____ so I decided to stay inside.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h230",
+    "prompt": "Rewrite the following statement making it more concise: \"Suzanne works as an engineer, and she is currently employed by XYZ Corp.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h231",
+    "prompt": "Come up with a creative way to teach children about climate change",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h232",
+    "prompt": "What key factor allows the World Wide Web to function?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h233",
+    "prompt": "Explain how to paint a room.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h234",
+    "prompt": "Classify the following statement as true or false. \"A scientific method cannot be used to study a social phenomenon.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h235",
+    "prompt": "List 3 instructions GPT models can do.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h236",
+    "prompt": "Give advice on how to stay fit and healthy during the pandemic.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h237",
+    "prompt": "Edit the following sentence by making it more precise: \n\n\"The patient had a fever.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h238",
+    "prompt": "Write pseudocode for a program to print all the numbers between 1 to 10.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h239",
+    "prompt": "Categorize the following statement according to its type (moral, legal, universal, etc.): \"Everyone should treat each other with respect.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h240",
+    "prompt": "Design an algorithm to determine whether a given number is prime.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h241",
+    "prompt": "Find a parallel structure in the following sentence: \"She cooked dinner, cleaned the dishes, and did the laundry.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h242",
+    "prompt": "Describe what type of animal is a koala.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h243",
+    "prompt": "Describe the most common features an optical microscope has.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h244",
+    "prompt": "What are the benefits of adopting a \"test-driven\" approach to software development?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h245",
+    "prompt": "Generate a 3-line poem based on the following theme: 'Celebrating Nature.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h246",
+    "prompt": "Write a question that can be used in a quiz to test knowledge of English grammar.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h247",
+    "prompt": "Generate a random password with 8 characters, consisting of lower and upper-case letters and numbers.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h248",
+    "prompt": "Create a problem statement for an online course about public speaking.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h249",
+    "prompt": "Rate the importance of creativity in life and give one example of how it helps you.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h250",
+    "prompt": "Name one type of AI that is used in machine translation.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h251",
+    "prompt": "Name a famous person with roots in the city of Calcutta.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h252",
+    "prompt": "Describe a medieval castle in 3 sentences.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h253",
+    "prompt": "Generate the main points for a presentation about the impact of air pollution in cities.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h254",
+    "prompt": "Describe a new way to use artificial intelligence in the classroom.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h255",
+    "prompt": "Suggest five features for a photo editing application",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h256",
+    "prompt": "Find a website where you can watch documentaries.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h257",
+    "prompt": "Select the two most influential people of the twentieth century.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h258",
+    "prompt": "Generate 5 questions about the usage of a new smart phone.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h259",
+    "prompt": "What would be the most important thing to consider when applying for a loan?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h260",
+    "prompt": "Create a timeline for the world's tallest mountain.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h261",
+    "prompt": "Name the character that is featured in the novel \"The Catcher in the Rye\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h262",
+    "prompt": "Create a character sketch for a villain.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h263",
+    "prompt": "Find the tenth largest city in the world in terms of population.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h264",
+    "prompt": "Create an automated response for a customer who has inquired about the warranty of a product.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h265",
+    "prompt": "Generate an appropriate response when someone says, \"I'm having a difficult time.\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h266",
+    "prompt": "Which is the hottest planet in our Solar System?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h267",
+    "prompt": "Explain the importance of the author's purpose in literature.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h268",
+    "prompt": "Read the following and come up with a list of adjectives related to sports.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h269",
+    "prompt": "Describe the role and importance of artificial intelligence today",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h270",
+    "prompt": "What is the most significant environmental challenge that humanity currently faces?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h271",
+    "prompt": "Name 3 countries that speak Spanish as an official language.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h272",
+    "prompt": "Explain what a Bloom filter is",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h273",
+    "prompt": "Create a joke using the following words: parachute, rubber band, waffle.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h274",
+    "prompt": "Pick five items for a first aid kit",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h275",
+    "prompt": "Explain why certain materials are better for insulation",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h276",
+    "prompt": "Summarize the historical events underlying the current immigration debate",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h277",
+    "prompt": "Write a near-future fiction set in the year 2040. Output should be 5 sentences.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h278",
+    "prompt": "Explain the concept of corporate social responsibility",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h279",
+    "prompt": "Please give an example of a 20th century writer from Japan",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h280",
+    "prompt": "Come up with a new word that combines the two words \u2018flavor\u2019 and \u2018satisfied\u2019",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h281",
+    "prompt": "Add the following ingredients to a holiday cookie recipe: flour, honey, and molasses.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h282",
+    "prompt": "Give an example of a traditional folk tale.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h283",
+    "prompt": "Explain the consequences of not voting in the upcoming election.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h284",
+    "prompt": "What does the acronym CRUD stand for when it comes to databases?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h285",
+    "prompt": "Generate a haiku with the words 'moonlight', 'heart' and 'glow'.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h286",
+    "prompt": "Evaluate the expression 4+2*3.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h287",
+    "prompt": "Generate a descriptive title for an article about deep learning",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h288",
+    "prompt": "Generate a list of US Presidents.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h289",
+    "prompt": "Write a paragraph describing the painting Monet's \"Impression, Sunrise\"",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h290",
+    "prompt": "Write a paragraph that describes a time when you achieved a difficult goal.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h291",
+    "prompt": "Describe the GPT-3 language model.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h292",
+    "prompt": "What is the average life expectancy of a cat?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h293",
+    "prompt": "Explain what a rhetorical question is in a sentence or two.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h294",
+    "prompt": "Suggest some methods to reduce stress in a job interview.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h295",
+    "prompt": "Provide an example of a metric system unit of time.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h296",
+    "prompt": "Explain why Pluto is no longer considered a planet.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h297",
+    "prompt": "Describe three qualities of good customer service.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h298",
+    "prompt": "List the names of four social media platforms.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h299",
+    "prompt": "How do you get rid of oil stains from YELLOW fabric?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h300",
+    "prompt": "Give a list of five foods rich in calcium.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h301",
+    "prompt": "Name 5 common disease-causing pathogens.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h302",
+    "prompt": "Name a popular activity people do in the summer.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h303",
+    "prompt": "Find 5 sentence patterns commonly used in English.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h304",
+    "prompt": "Describe how decision-making algorithms work.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h305",
+    "prompt": "What are some ways to improve cybersecurity for businesses?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h306",
+    "prompt": "Perform a character analysis of Bilbo Baggins from \"The Hobbit\".",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h307",
+    "prompt": "What is a benefit of sending automated emails?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h308",
+    "prompt": "Generate a riddle about an owl.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h309",
+    "prompt": "Outline the basic operations of a web browser.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h310",
+    "prompt": "Describe what happened in the most exciting football match you have seen.",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h311",
+    "prompt": "What is the significance of 'self-directed learning'?",
+    "category": "harmless",
+    "source": "alpaca"
+  },
+  {
+    "id": "h312",
+    "prompt": "Create three creative metaphors to describe a slowly boiling pot of water.",
+    "category": "harmless",
+    "source": "alpaca"
+  }
+]

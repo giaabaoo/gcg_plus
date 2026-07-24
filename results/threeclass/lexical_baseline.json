@@ -1,0 +1,27 @@
+{
+  "seed": 1234,
+  "note": "TF-IDF word 1-2 grams on the PAP text; same rows/splits",
+  "harmfulness": {
+    "n_train": 1848,
+    "n_test": 618,
+    "vocab": 14085,
+    "auroc": 0.9238
+  },
+  "refusal": {
+    "n_train": 4073,
+    "n_test": 1368,
+    "vocab": 27534,
+    "auroc": 0.8012
+  },
+  "naive": {
+    "n_train": 3308,
+    "n_test": 1101,
+    "vocab": 23574,
+    "auroc": 0.7882
+  },
+  "dose_response_lexical": {
+    "n_train": 736,
+    "n_test": 241,
+    "tercile_auroc": 0.9039
+  }
+}

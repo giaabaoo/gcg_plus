@@ -1,0 +1,29 @@
+{
+  "seed": 1234,
+  "n_train": 736,
+  "n_test": 241,
+  "tercile_cuts": [
+    0.6289,
+    0.8203
+  ],
+  "layers": {
+    "14": {
+      "C": 0.01,
+      "val": 0.9654,
+      "test": 0.9379
+    },
+    "16": {
+      "C": 0.01,
+      "val": 0.9684,
+      "test": 0.9542
+    },
+    "18": {
+      "C": 0.01,
+      "val": 0.9613,
+      "test": 0.9467
+    }
+  },
+  "lexical_tercile_auroc": 0.9039,
+  "best_activation_tercile_auroc": 0.9542,
+  "margin_over_lexical": 0.0503
+}

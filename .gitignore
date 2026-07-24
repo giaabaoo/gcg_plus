@@ -26,6 +26,11 @@ checkpoints/rphi_v2/
 # Regenerate with scripts/earlytok/gen_ablated_samples.py (~2.5 h on one H100).
 results/earlytok/shards/
 
+# Part 8 raw activations: 1.8 GB of last-prompt-token residual streams (7086 x 33 x 4096).
+# Kept on disk for reuse (probes/geometry re-run off them in minutes); never committed.
+# Regenerate with scripts/threeclass/capture_acts.py (~15 min on one H100).
+results/threeclass/acts.pt
+
 # --- vendored tools: keep source, drop nested git + unused model runs ---
 tools/*/.git/
 tools/**/.git/
