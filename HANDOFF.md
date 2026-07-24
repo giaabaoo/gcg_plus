@@ -820,3 +820,34 @@ axis here that is simultaneously decodable, geometrically distinct, and causal.
   so activations vary by construction. It only bites when separating k samples of the
   SAME prompt, where the prompt-token state is identical.
 - A probe reaching ceiling at layer 1 is a lexical alarm, not a win.
+
+
+## Follow-up: Part 6's cross-technique matrix, whitened
+
+Prompted by Part 8's raw-vs-whitened gap, re-ran Part 6's technique x technique
+cosine matrix under subspace whitening (`scripts/threeclass/whiten_part6_matrix.py`,
+`results/directions/whitened_matrix.json`). Directions are Part 6's saved
+diff-in-means (subspace energy 0.976-0.993 -> reliable, unlike r); Sigma from the
+Part 8 harmful-PAP activations at the same layer (Part 6's pools were never cached).
+
+| layer | raw mean | whitened mean k=128 / 256 / 512 | all-positive? |
+|---|---|---|---|
+| 12 | +0.619 | +0.341 / +0.232 / +0.145 | yes (all k) |
+| 14 | +0.689 | +0.323 / +0.230 / +0.145 | yes (all k) |
+| 16 | +0.821 | +0.294 / +0.209 / +0.137 | yes (all k) |
+
+**Split decision.** The all-positive STRUCTURE survives whitening at every layer and
+every k - so "one shared axis" does not reverse; a genuine non-negative shared
+component exists. But the STRENGTH was mostly anisotropy: raw ~0.69 collapses to
+0.14-0.34, and the value decays monotonically with k, meaning the shared component
+lives almost entirely in the top ~128 high-variance directions and the techniques are
+only weakly collinear once those are equalised. Threats (the weak control) is the most
+distinct (whitened 0.02-0.05), a clean sanity check.
+
+**Consequence for Part 6:** the "one shared axis" phrasing (conclusion 2) is an
+overstatement of a raw-cosine artifact and should soften to "a shared component;
+non-negatively related but weakly collinear." Part 6's BEHAVIOURAL core is unaffected -
+"persuasion directions are degraded -r, and -r dominates (92% vs 47-64%)" rests on the
+steering experiment, not this matrix. The cos(d_t, r) guard column cannot be whitened
+reliably (r holds only 11-42% of its norm in the estimable subspace) and does not need
+to be.

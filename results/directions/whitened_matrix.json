@@ -1,0 +1,327 @@
+{
+  "method": "top-k subspace whitening of Part-6 saved directions; Sigma from harmful-PAP acts.pt",
+  "note": "full-covariance whitening rejected (Part 8 artifact: cond ~1e8)",
+  "layers": {
+    "12": {
+      "raw": {
+        "Authority endorsement | Evidence-based Persuasion": 0.8753,
+        "Authority endorsement | Expert Endorsement": 0.8855,
+        "Authority endorsement | Logical appeal": 0.893,
+        "Authority endorsement | Misrepresentation": 0.5744,
+        "Authority endorsement | Threats": 0.5222,
+        "Evidence-based Persuasion | Expert Endorsement": 0.9421,
+        "Evidence-based Persuasion | Logical appeal": 0.8645,
+        "Evidence-based Persuasion | Misrepresentation": 0.3723,
+        "Evidence-based Persuasion | Threats": 0.3978,
+        "Expert Endorsement | Logical appeal": 0.8463,
+        "Expert Endorsement | Misrepresentation": 0.3816,
+        "Expert Endorsement | Threats": 0.424,
+        "Logical appeal | Misrepresentation": 0.6516,
+        "Logical appeal | Threats": 0.4151,
+        "Misrepresentation | Threats": 0.2383
+      },
+      "whitened": {
+        "128": {
+          "Authority endorsement | Evidence-based Persuasion": 0.6386,
+          "Authority endorsement | Expert Endorsement": 0.4955,
+          "Authority endorsement | Logical appeal": 0.5018,
+          "Authority endorsement | Misrepresentation": 0.3306,
+          "Authority endorsement | Threats": 0.1655,
+          "Evidence-based Persuasion | Expert Endorsement": 0.5101,
+          "Evidence-based Persuasion | Logical appeal": 0.6074,
+          "Evidence-based Persuasion | Misrepresentation": 0.4026,
+          "Evidence-based Persuasion | Threats": 0.05,
+          "Expert Endorsement | Logical appeal": 0.3603,
+          "Expert Endorsement | Misrepresentation": 0.2749,
+          "Expert Endorsement | Threats": 0.143,
+          "Logical appeal | Misrepresentation": 0.3813,
+          "Logical appeal | Threats": 0.0681,
+          "Misrepresentation | Threats": 0.1912
+        },
+        "256": {
+          "Authority endorsement | Evidence-based Persuasion": 0.5231,
+          "Authority endorsement | Expert Endorsement": 0.3711,
+          "Authority endorsement | Logical appeal": 0.3373,
+          "Authority endorsement | Misrepresentation": 0.2397,
+          "Authority endorsement | Threats": 0.1163,
+          "Evidence-based Persuasion | Expert Endorsement": 0.3435,
+          "Evidence-based Persuasion | Logical appeal": 0.4171,
+          "Evidence-based Persuasion | Misrepresentation": 0.2796,
+          "Evidence-based Persuasion | Threats": 0.0508,
+          "Expert Endorsement | Logical appeal": 0.2121,
+          "Expert Endorsement | Misrepresentation": 0.1123,
+          "Expert Endorsement | Threats": 0.0717,
+          "Logical appeal | Misrepresentation": 0.2598,
+          "Logical appeal | Threats": 0.0479,
+          "Misrepresentation | Threats": 0.0926
+        },
+        "512": {
+          "Authority endorsement | Evidence-based Persuasion": 0.3579,
+          "Authority endorsement | Expert Endorsement": 0.228,
+          "Authority endorsement | Logical appeal": 0.2023,
+          "Authority endorsement | Misrepresentation": 0.1691,
+          "Authority endorsement | Threats": 0.0686,
+          "Evidence-based Persuasion | Expert Endorsement": 0.2054,
+          "Evidence-based Persuasion | Logical appeal": 0.3037,
+          "Evidence-based Persuasion | Misrepresentation": 0.1823,
+          "Evidence-based Persuasion | Threats": 0.0092,
+          "Expert Endorsement | Logical appeal": 0.109,
+          "Expert Endorsement | Misrepresentation": 0.0839,
+          "Expert Endorsement | Threats": 0.0383,
+          "Logical appeal | Misrepresentation": 0.1646,
+          "Logical appeal | Threats": 0.0059,
+          "Misrepresentation | Threats": 0.0431
+        }
+      },
+      "subspace_energy": {
+        "128": {
+          "Authority endorsement": 0.9824,
+          "Evidence-based Persuasion": 0.9921,
+          "Expert Endorsement": 0.9899,
+          "Logical appeal": 0.9848,
+          "Misrepresentation": 0.9835,
+          "Threats": 0.927
+        },
+        "256": {
+          "Authority endorsement": 0.989,
+          "Evidence-based Persuasion": 0.9958,
+          "Expert Endorsement": 0.9943,
+          "Logical appeal": 0.9916,
+          "Misrepresentation": 0.9925,
+          "Threats": 0.955
+        },
+        "512": {
+          "Authority endorsement": 0.9942,
+          "Evidence-based Persuasion": 0.9977,
+          "Expert Endorsement": 0.9972,
+          "Logical appeal": 0.9964,
+          "Misrepresentation": 0.9968,
+          "Threats": 0.9763
+        }
+      },
+      "summary": {
+        "raw_min": 0.2383,
+        "raw_mean": 0.6189,
+        "raw_all_positive": true,
+        "whitened_min": 0.0059,
+        "whitened_mean": 0.1448,
+        "whitened_all_positive": true,
+        "min_subspace_energy": 0.9763
+      }
+    },
+    "14": {
+      "raw": {
+        "Authority endorsement | Evidence-based Persuasion": 0.8986,
+        "Authority endorsement | Expert Endorsement": 0.8842,
+        "Authority endorsement | Logical appeal": 0.9247,
+        "Authority endorsement | Misrepresentation": 0.6451,
+        "Authority endorsement | Threats": 0.6436,
+        "Evidence-based Persuasion | Expert Endorsement": 0.9409,
+        "Evidence-based Persuasion | Logical appeal": 0.9318,
+        "Evidence-based Persuasion | Misrepresentation": 0.4525,
+        "Evidence-based Persuasion | Threats": 0.5064,
+        "Expert Endorsement | Logical appeal": 0.8878,
+        "Expert Endorsement | Misrepresentation": 0.4439,
+        "Expert Endorsement | Threats": 0.5283,
+        "Logical appeal | Misrepresentation": 0.6271,
+        "Logical appeal | Threats": 0.5677,
+        "Misrepresentation | Threats": 0.4466
+      },
+      "whitened": {
+        "128": {
+          "Authority endorsement | Evidence-based Persuasion": 0.6565,
+          "Authority endorsement | Expert Endorsement": 0.4169,
+          "Authority endorsement | Logical appeal": 0.5095,
+          "Authority endorsement | Misrepresentation": 0.409,
+          "Authority endorsement | Threats": 0.1554,
+          "Evidence-based Persuasion | Expert Endorsement": 0.3827,
+          "Evidence-based Persuasion | Logical appeal": 0.6224,
+          "Evidence-based Persuasion | Misrepresentation": 0.4459,
+          "Evidence-based Persuasion | Threats": 0.0891,
+          "Expert Endorsement | Logical appeal": 0.2638,
+          "Expert Endorsement | Misrepresentation": 0.2316,
+          "Expert Endorsement | Threats": 0.0751,
+          "Logical appeal | Misrepresentation": 0.343,
+          "Logical appeal | Threats": 0.0893,
+          "Misrepresentation | Threats": 0.1537
+        },
+        "256": {
+          "Authority endorsement | Evidence-based Persuasion": 0.5529,
+          "Authority endorsement | Expert Endorsement": 0.3261,
+          "Authority endorsement | Logical appeal": 0.3153,
+          "Authority endorsement | Misrepresentation": 0.2662,
+          "Authority endorsement | Threats": 0.1012,
+          "Evidence-based Persuasion | Expert Endorsement": 0.2907,
+          "Evidence-based Persuasion | Logical appeal": 0.4432,
+          "Evidence-based Persuasion | Misrepresentation": 0.3189,
+          "Evidence-based Persuasion | Threats": 0.0861,
+          "Expert Endorsement | Logical appeal": 0.1354,
+          "Expert Endorsement | Misrepresentation": 0.1561,
+          "Expert Endorsement | Threats": 0.077,
+          "Logical appeal | Misrepresentation": 0.2447,
+          "Logical appeal | Threats": 0.0743,
+          "Misrepresentation | Threats": 0.062
+        },
+        "512": {
+          "Authority endorsement | Evidence-based Persuasion": 0.3812,
+          "Authority endorsement | Expert Endorsement": 0.2393,
+          "Authority endorsement | Logical appeal": 0.1986,
+          "Authority endorsement | Misrepresentation": 0.1698,
+          "Authority endorsement | Threats": 0.0512,
+          "Evidence-based Persuasion | Expert Endorsement": 0.1662,
+          "Evidence-based Persuasion | Logical appeal": 0.298,
+          "Evidence-based Persuasion | Misrepresentation": 0.2055,
+          "Evidence-based Persuasion | Threats": 0.0168,
+          "Expert Endorsement | Logical appeal": 0.0552,
+          "Expert Endorsement | Misrepresentation": 0.1026,
+          "Expert Endorsement | Threats": 0.0437,
+          "Logical appeal | Misrepresentation": 0.175,
+          "Logical appeal | Threats": 0.042,
+          "Misrepresentation | Threats": 0.0304
+        }
+      },
+      "subspace_energy": {
+        "128": {
+          "Authority endorsement": 0.9876,
+          "Evidence-based Persuasion": 0.9947,
+          "Expert Endorsement": 0.9924,
+          "Logical appeal": 0.9895,
+          "Misrepresentation": 0.9833,
+          "Threats": 0.9355
+        },
+        "256": {
+          "Authority endorsement": 0.993,
+          "Evidence-based Persuasion": 0.9966,
+          "Expert Endorsement": 0.9957,
+          "Logical appeal": 0.9945,
+          "Misrepresentation": 0.9924,
+          "Threats": 0.9666
+        },
+        "512": {
+          "Authority endorsement": 0.9961,
+          "Evidence-based Persuasion": 0.9984,
+          "Expert Endorsement": 0.9979,
+          "Logical appeal": 0.9976,
+          "Misrepresentation": 0.9966,
+          "Threats": 0.9848
+        }
+      },
+      "summary": {
+        "raw_min": 0.4439,
+        "raw_mean": 0.6886,
+        "raw_all_positive": true,
+        "whitened_min": 0.0168,
+        "whitened_mean": 0.145,
+        "whitened_all_positive": true,
+        "min_subspace_energy": 0.9848
+      }
+    },
+    "16": {
+      "raw": {
+        "Authority endorsement | Evidence-based Persuasion": 0.9411,
+        "Authority endorsement | Expert Endorsement": 0.9242,
+        "Authority endorsement | Logical appeal": 0.9632,
+        "Authority endorsement | Misrepresentation": 0.8507,
+        "Authority endorsement | Threats": 0.7651,
+        "Evidence-based Persuasion | Expert Endorsement": 0.9543,
+        "Evidence-based Persuasion | Logical appeal": 0.9632,
+        "Evidence-based Persuasion | Misrepresentation": 0.7496,
+        "Evidence-based Persuasion | Threats": 0.641,
+        "Expert Endorsement | Logical appeal": 0.9212,
+        "Expert Endorsement | Misrepresentation": 0.7228,
+        "Expert Endorsement | Threats": 0.6682,
+        "Logical appeal | Misrepresentation": 0.8334,
+        "Logical appeal | Threats": 0.7019,
+        "Misrepresentation | Threats": 0.7151
+      },
+      "whitened": {
+        "128": {
+          "Authority endorsement | Evidence-based Persuasion": 0.6354,
+          "Authority endorsement | Expert Endorsement": 0.3516,
+          "Authority endorsement | Logical appeal": 0.5186,
+          "Authority endorsement | Misrepresentation": 0.3735,
+          "Authority endorsement | Threats": 0.1536,
+          "Evidence-based Persuasion | Expert Endorsement": 0.3338,
+          "Evidence-based Persuasion | Logical appeal": 0.6679,
+          "Evidence-based Persuasion | Misrepresentation": 0.4106,
+          "Evidence-based Persuasion | Threats": 0.0785,
+          "Expert Endorsement | Logical appeal": 0.1784,
+          "Expert Endorsement | Misrepresentation": 0.1844,
+          "Expert Endorsement | Threats": 0.0572,
+          "Logical appeal | Misrepresentation": 0.3101,
+          "Logical appeal | Threats": 0.059,
+          "Misrepresentation | Threats": 0.0918
+        },
+        "256": {
+          "Authority endorsement | Evidence-based Persuasion": 0.5013,
+          "Authority endorsement | Expert Endorsement": 0.2628,
+          "Authority endorsement | Logical appeal": 0.301,
+          "Authority endorsement | Misrepresentation": 0.2569,
+          "Authority endorsement | Threats": 0.078,
+          "Evidence-based Persuasion | Expert Endorsement": 0.2689,
+          "Evidence-based Persuasion | Logical appeal": 0.4776,
+          "Evidence-based Persuasion | Misrepresentation": 0.3208,
+          "Evidence-based Persuasion | Threats": 0.0636,
+          "Expert Endorsement | Logical appeal": 0.1189,
+          "Expert Endorsement | Misrepresentation": 0.1134,
+          "Expert Endorsement | Threats": 0.0455,
+          "Logical appeal | Misrepresentation": 0.2014,
+          "Logical appeal | Threats": 0.0626,
+          "Misrepresentation | Threats": 0.0607
+        },
+        "512": {
+          "Authority endorsement | Evidence-based Persuasion": 0.3559,
+          "Authority endorsement | Expert Endorsement": 0.2139,
+          "Authority endorsement | Logical appeal": 0.1904,
+          "Authority endorsement | Misrepresentation": 0.1558,
+          "Authority endorsement | Threats": 0.0386,
+          "Evidence-based Persuasion | Expert Endorsement": 0.1709,
+          "Evidence-based Persuasion | Logical appeal": 0.3058,
+          "Evidence-based Persuasion | Misrepresentation": 0.1878,
+          "Evidence-based Persuasion | Threats": 0.074,
+          "Expert Endorsement | Logical appeal": 0.0663,
+          "Expert Endorsement | Misrepresentation": 0.0776,
+          "Expert Endorsement | Threats": 0.0329,
+          "Logical appeal | Misrepresentation": 0.1373,
+          "Logical appeal | Threats": 0.0256,
+          "Misrepresentation | Threats": 0.0258
+        }
+      },
+      "subspace_energy": {
+        "128": {
+          "Authority endorsement": 0.9942,
+          "Evidence-based Persuasion": 0.9971,
+          "Expert Endorsement": 0.9962,
+          "Logical appeal": 0.9955,
+          "Misrepresentation": 0.9921,
+          "Threats": 0.9686
+        },
+        "256": {
+          "Authority endorsement": 0.9972,
+          "Evidence-based Persuasion": 0.9984,
+          "Expert Endorsement": 0.998,
+          "Logical appeal": 0.9977,
+          "Misrepresentation": 0.9958,
+          "Threats": 0.9836
+        },
+        "512": {
+          "Authority endorsement": 0.9987,
+          "Evidence-based Persuasion": 0.9992,
+          "Expert Endorsement": 0.9991,
+          "Logical appeal": 0.9991,
+          "Misrepresentation": 0.9984,
+          "Threats": 0.9926
+        }
+      },
+      "summary": {
+        "raw_min": 0.641,
+        "raw_mean": 0.821,
+        "raw_all_positive": true,
+        "whitened_min": 0.0256,
+        "whitened_mean": 0.1372,
+        "whitened_all_positive": true,
+        "min_subspace_energy": 0.9926
+      }
+    }
+  }
+}
